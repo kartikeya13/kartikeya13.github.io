@@ -1,9 +1,9 @@
- <!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Kartikeya[PhD@UB]</title>
-  <meta name="author" content="Jon Barron">
+  <title>Kartikeya Singh [PhD@UB]</title>
+  <meta name="author" content="Kartikeya Singh">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
@@ -35,54 +35,21 @@
     .header h1 {
       margin: 0;
     }
-    .lead {
-      font-size: 20px;
-    }
-    .about {
-      margin: 15px 0;
-    }
-    .social-links a {
-      margin-right: 20px;
-      text-decoration: none;
-    }
-    .zoom-link {
-      display: inline-block;
-      margin-top: 20px;
-      background: #007bff;
-      color: #fff;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-    .profile-photo {
-      width: 100%;
-      max-width: 300px;
-      border-radius: 10%;
+    .section {
       margin: 20px 0;
     }
-   .news-box {
-      background: #333;
-      color: #fff;
-      padding: 15px;
-      border-radius: 8px;
-      margin-top: 20px;
+    .section h2 {
+      background: #007bff;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
     }
-    .news-title {
-      font-size: 24px;
+    .section ul {
+      list-style: none;
+      padding: 0;
+    }
+    .section ul li {
       margin-bottom: 10px;
-    }
-    .news-item {
-      margin-bottom: 10px;
-    }
-    .news-item:last-child {
-      margin-bottom: 0;
-    }
-    .news-date {
-      font-weight: bold;
-      margin-right: 10px;
-    }
-    .news-content {
-      display: inline; /* Align date and summary in one line */
     }
   </style>
 </head>
@@ -90,35 +57,62 @@
 <body>
   <div class="header">
     <h1>Kartikeya Singh</h1>
+    <p>Third-Year Ph.D. Student in Computer Science and Engineering at University at Buffalo</p>
   </div>
 
   <div class="container">
-    <div class="lead">Third-Year Ph.D. Student in CSE at University at Buffalo, New York</div>
+    <section class="about">
+      <h2>About Me</h2>
+      <p>I am a researcher specializing in autonomous systems, SLAM, and risk-aware navigation for robots in complex terrains. My work spans developing algorithms for robust perception and navigation.</p>
+    </section>
 
-    <div class="about">
-      I am a part of the <a href="https://droneslab.github.io/">Distributed RObotics and Networked Embedded Sensing (DRONES) Lab</a> working under <a href="https://cse.buffalo.edu/faculty/kdantu/">Prof. Karthik Dantu</a>. My research involves advancements in robotics focusing on deep learning techniques for perception. Before joining UB, I worked as a Research Associate in <a href="https://moonlab.iiserb.ac.in/">MOON lab</a> at IISER Bhopal, where I worked with scene understanding frameworks in an unstructured environment. I also worked at <a href="https://www.inria.fr/en/inria-paris-centre">INRIA Paris</a>, France during the summer of 2019 as a Research Intern.
-    </div>
+    <section class="education section">
+      <h2>Education</h2>
+      <ul>
+        <li><b>Ph.D. in Computer Science</b>, University at Buffalo (2022–Present)</li>
+        <li><b>B.Tech in Computer Science</b>, Amity University, Lucknow (2016–2020)</li>
+      </ul>
+    </section>
 
-    <div class="social-links">
-      <a href="mailto:kartiksingh538@gmail.com">Email</a>
-      <a href="https://drive.google.com/file/d/1vdvcNTiaMWuD55pI2BcrDzWADybJa5bS/view?usp=sharing">CV</a>
-      <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&hl=en&user=ZYrJj3AAAAAJ">Google Scholar</a>
-      <a href="https://instagram.com/kartikeya.s.parihar?utm_medium=copy_link">Instagram</a>
-    </div>
+    <section class="experience section">
+      <h2>Research and Teaching Experience</h2>
+      <ul>
+        <li><b>Research Assistant</b>, University at Buffalo (2023–Present)<br>
+          Developed algorithms like PANOS and L-DYNO for legged robots and perception tasks.
+        </li>
+        <li><b>Teaching Assistant</b>, University at Buffalo (2022–2022)<br>
+          Assisted in courses like Robotic Algorithms and Data Intensive Computing.
+        </li>
+        <li><b>Research Associate</b>, IISER Bhopal (2020–2022)<br>
+          Worked on frameworks like OFFSEG for off-road semantic segmentation.</li>
+      </ul>
+    </section>
 
-    <!-- <a href="https://buffalo.zoom.us/j/98198591860?pwd=MjEzM0JGVjZYMjArV0lPcDU3MGYvdz09" target="_blank" class="zoom-link">Join my Zoom Meeting</a> -->
+    <section class="publications section">
+      <h2>Publications</h2>
+      <ul>
+        <li><b>PANOS:</b> Payload-Aware Navigation in Offroad Scenarios (ICRA 2025)</li>
+        <li><b>L-DYNO:</b> Framework to Learn Consistent Visual Features (ICRA 2024)</li>
+        <li><b>OFFSEG:</b> Semantic Segmentation Framework for Off-Road Driving (CASE 2021)</li>
+      </ul>
+    </section>
 
-    <img src="mylogo3.jpeg" alt="profile photo" class="profile-photo">
-   <!-- News Box -->
-    <div class="news-box">
-      <div class="news-title">Latest Updates</div>
-      <div class="news-item">
-        <span class="news-date">Jan 29, 2024:</span>
-        <span class="news-content">Our paper, "L-DYNO: Framework to Learn Consistent Visual Features Using Robot’s Motion," has been accepted for presentation at the International Conference on Robotics and Automation (ICRA) 2024 taking place in Yokohama, Japan.</span>
-      </div>
- 
-      <!-- Add more news items as needed -->
-    </div>
+    <section class="skills section">
+      <h2>Skills</h2>
+      <ul>
+        <li>Languages: Python, C++, SQL, JavaScript</li>
+        <li>Tools: Pytorch, TensorFlow, ROS, Gazebo</li>
+        <li>Platforms: NVIDIA Jetson, Boston Dynamics Spot</li>
+      </ul>
+    </section>
+
+    <section class="contact section">
+      <h2>Contact</h2>
+      <ul>
+        <li>Email: <a href="mailto:ksingh35@buffalo.edu">ksingh35@buffalo.edu</a></li>
+        <li>Google Scholar: <a href="https://scholar.google.com/citations?user=ZYrJj3AAAAAJ">scholar.google.com</a></li>
+      </ul>
+    </section>
   </div>
 </body>
 </html>
