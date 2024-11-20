@@ -35,12 +35,19 @@
     .header h1 {
       margin: 0;
     }
+    .about-section {
+      display: flex;
+      align-items: center;
+      gap: 20px; /* Spacing between image and text */
+    }
     .profile-photo {
-      width: 100%;
-      max-width: 200px;
+      width: 150px;
+      height: auto;
       border-radius: 10%;
-      margin: 20px auto;
-      display: block;
+      flex-shrink: 0; /* Prevent the image from resizing */
+    }
+    .about-text {
+      flex-grow: 1;
     }
     .section {
       margin: 20px 0;
@@ -68,11 +75,17 @@
   </div>
 
   <div class="container">
-    <img src="mylogo3.jpeg" alt="Kartikeya Singh" class="profile-photo">
-
-    <section class="about">
-      <h2>About Me</h2>
-      <p>I am a researcher specializing in autonomous systems, SLAM, and risk-aware navigation for robots in complex terrains. My work spans developing algorithms for robust perception and navigation.</p>
+    <section class="about-section">
+      <img src="mylogo3.jpeg" alt="Kartikeya Singh" class="profile-photo">
+      <div class="about-text">
+        <h2>About Me</h2>
+        <p>
+          I am a researcher specializing in autonomous systems, SLAM, and risk-aware navigation for robots in complex terrains. 
+          My work spans developing algorithms for robust perception and navigation. Currently, I am a Ph.D. student at the 
+          University at Buffalo, working in the Distributed Robotics and Networked Embedded Sensing (DRONES) Lab under 
+          Prof. Karthik Dantu.
+        </p>
+      </div>
     </section>
 
     <section class="education section">
