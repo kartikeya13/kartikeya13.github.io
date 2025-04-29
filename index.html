@@ -126,7 +126,7 @@
       margin-bottom: 0.5rem;
     }
 
-    .publications li {
+    .publications li, .education li, .experience li, .skills li {
       margin-bottom: 1.5rem;
       padding: 1rem;
       background: var(--light-bg);
@@ -170,7 +170,10 @@
     <nav class="nav">
       <a href="#about">About</a>
       <a href="#news">News</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
       <a href="#publications">Publications</a>
+      <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -210,7 +213,59 @@
       </div>
     </section>
 
-    <!-- Rest of your existing sections (Education, Experience, etc.) -->
+    <section id="education" class="section">
+      <h2>Education</h2>
+      <ul class="education">
+        <li><strong>Ph.D. in Computer Science</strong><br>
+          University at Buffalo (2022–Present)<br>
+          Advisor: Prof. Karthik Dantu
+        </li>
+        <li><strong>B.Tech in Computer Science</strong><br>
+          Amity University, Lucknow (2016–2020)<br>
+          GPA: 8.5/10
+        </li>
+      </ul>
+    </section>
+
+    <section id="experience" class="section">
+      <h2>Research and Teaching Experience</h2>
+      <ul class="experience">
+        <li><strong>Research Assistant</strong><br>
+          University at Buffalo (2023–Present)<br>
+          - Developed PANOS for legged robot navigation<br>
+          - Created L-DYNO framework for visual feature learning
+        </li>
+        <li><strong>Teaching Assistant</strong><br>
+          University at Buffalo (2022–2022)<br>
+          - Robotic Algorithms (CSE 568/468)<br>
+          - Data Intensive Computing (CSE 587)
+        </li>
+        <li><strong>Research Associate</strong><br>
+          IISER Bhopal (2020–2022)<br>
+          - Developed OFFSEG framework<br>
+          - Worked on multi-modal sensor fusion
+        </li>
+      </ul>
+    </section>
+
+    <section id="publications" class="section">
+      <h2>Publications</h2>
+      <ul class="publications">
+        <li><strong>PANOS:</strong> Payload-Aware Navigation in Offroad Scenarios (ICRA 2025)</li>
+        <li><strong>L-DYNO:</strong> Framework to Learn Consistent Visual Features (ICRA 2024)</li>
+        <li><strong>OFFSEG:</strong> Semantic Segmentation Framework for Off-Road Driving (CASE 2021)</li>
+      </ul>
+    </section>
+
+    <section id="skills" class="section">
+      <h2>Skills</h2>
+      <ul class="skills">
+        <li><strong>Languages:</strong> Python, C++, SQL, JavaScript</li>
+        <li><strong>Tools:</strong> Pytorch, TensorFlow, ROS, Gazebo</li>
+        <li><strong>Platforms:</strong> NVIDIA Jetson, Boston Dynamics Spot</li>
+        <li><strong>Concepts:</strong> SLAM, Motion Planning, Deep Learning</li>
+      </ul>
+    </section>
 
     <section id="contact" class="section contact">
       <h2>Contact</h2>
@@ -218,6 +273,7 @@
         <li>📧 Email: <a href="mailto:ksingh35@buffalo.edu">ksingh35@buffalo.edu</a></li>
         <li>📚 Google Scholar: <a href="https://scholar.google.com/citations?user=ZYrJj3AAAAAJ">scholar.google.com</a></li>
         <li>🏛️ Office: Davis Hall 312, University at Buffalo</li>
+        <li>💼 LinkedIn: <a href="#">linkedin.com/in/kartikeya</a></li>
       </ul>
     </section>
   </div>
