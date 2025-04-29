@@ -5,76 +5,85 @@
   <title>Kartikeya Singh [PhD@UB]</title>
   <meta name="author" content="Kartikeya Singh">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Open+Sans:wght@400;600&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg">
 
   <style>
     :root {
-      --primary-color: #2c3e50;
-      --secondary-color: #3498db;
-      --accent-color: #e74c3c;
-      --text-color: #444;
-      --light-bg: #f9f9f9;
+      --primary-color: #2A2F4F;
+      --secondary-color: #4E4FEB;
+      --accent-color: #FF6B6B;
+      --text-color: #2D4059;
+      --light-bg: #F8F9FA;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('cover.jpg');
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('cover.jpg');
       background-size: cover;
       color: var(--text-color);
-      line-height: 1.6;
+      line-height: 1.7;
       margin: 0;
       padding: 0;
     }
 
+    h1, h2, h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
+
     .container {
       max-width: 1200px;
-      margin: 100px auto 40px;
-      padding: 30px;
+      margin: 120px auto 40px;
+      padding: 40px;
       background: white;
-      border-radius: 15px;
-      box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     }
 
     .header {
       background: var(--primary-color);
       color: white;
-      padding: 2rem 0;
-      text-align: center;
+      padding: 1.5rem 0;
       position: fixed;
       width: 100%;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
 
-    .nav {
-      margin-top: 1rem;
+    .profile-photo-container {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      overflow: visible;
+      margin: 0 auto;
     }
 
-    .nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 1.5rem;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-    }
-
-    .nav a:hover {
-      background: var(--secondary-color);
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 50%;
+      border: 6px solid var(--secondary-color);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+      transform: scale(1.05);
     }
 
     .about-section {
       display: flex;
       align-items: center;
-      gap: 30px;
-      margin: 2rem 0;
+      gap: 40px;
+      margin: 3rem 0;
       padding: 2rem;
       background: var(--light-bg);
-      border-radius: 10px;
+      border-radius: 15px;
+      position: relative;
     }
+
 
     .profile-photo {
       width: 200px;
@@ -95,69 +104,34 @@
       transform: translateX(10px);
     }
 
-    .section h2 {
+    section h2 {
       color: var(--primary-color);
-      margin: 0 0 1.5rem;
-      font-size: 1.8rem;
+      margin: 0 0 2rem;
+      font-size: 2rem;
+      letter-spacing: -0.5px;
     }
 
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 1.5rem;
-    }
-
-    .news-card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .news-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .news-date {
-      color: var(--accent-color);
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .publications li, .education li, .experience li, .skills li {
-      margin-bottom: 1.5rem;
-      padding: 1rem;
-      background: var(--light-bg);
-      border-radius: 5px;
-    }
-
-    .contact a {
-      color: var(--secondary-color);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .contact a:hover {
-      color: var(--accent-color);
+    .news-card h3 {
+      font-size: 1.25rem;
+      margin: 0.5rem 0;
+      color: var(--text-color);
     }
 
     @media (max-width: 768px) {
+      .container {
+        padding: 25px;
+        margin-top: 90px;
+      }
+      
       .about-section {
         flex-direction: column;
         text-align: center;
+        gap: 25px;
       }
 
-      .profile-photo {
-        width: 150px;
-        height: 150px;
-      }
-
-      .nav {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
+      .profile-photo-container {
+        width: 180px;
+        height: 180px;
       }
     }
   </style>
@@ -180,7 +154,8 @@
 
   <div class="container">
     <section id="about" class="about-section">
-      <img src="mylogo3.jpeg" alt="Kartikeya Singh" class="profile-photo">
+      <div class="profile-photo-container">
+        <img src="mylogo3.jpeg" alt="Kartikeya Singh" class="profile-photo">
       <div class="about-text">
         <h2>About Me</h2>
         <p>
