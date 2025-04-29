@@ -53,13 +53,35 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
 
+    .nav {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .nav a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .nav a:hover {
+      background: var(--secondary-color);
+      transform: translateY(-2px);
+    }
+
     .profile-photo-container {
       position: relative;
-      width: 220px;
-      height: 220px;
+      width: 240px;
+      height: 240px;
       border-radius: 50%;
-      overflow: visible;
+      overflow: hidden;
       margin: 0 auto;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
     }
 
     .profile-photo {
@@ -67,9 +89,6 @@
       height: 100%;
       object-fit: cover;
       object-position: top center;
-      border-radius: 50%;
-      border: 6px solid var(--secondary-color);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
       transform: scale(1.05);
     }
 
@@ -81,16 +100,6 @@
       padding: 2rem;
       background: var(--light-bg);
       border-radius: 15px;
-      position: relative;
-    }
-
-
-    .profile-photo {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid var(--secondary-color);
     }
 
     .section {
@@ -104,17 +113,56 @@
       transform: translateX(10px);
     }
 
-    section h2 {
+    .section h2 {
       color: var(--primary-color);
       margin: 0 0 2rem;
       font-size: 2rem;
       letter-spacing: -0.5px;
     }
 
-    .news-card h3 {
-      font-size: 1.25rem;
-      margin: 0.5rem 0;
-      color: var(--text-color);
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .news-card {
+      background: white;
+      padding: 1.8rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .news-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .news-date {
+      color: var(--accent-color);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .publications li, .education li, .experience li, .skills li {
+      margin-bottom: 1.5rem;
+      padding: 1.2rem;
+      background: var(--light-bg);
+      border-radius: 8px;
+      line-height: 1.6;
+    }
+
+    .contact a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-weight: 500;
+    }
+
+    .contact a:hover {
+      color: var(--accent-color);
     }
 
     @media (max-width: 768px) {
@@ -122,7 +170,7 @@
         padding: 25px;
         margin-top: 90px;
       }
-      
+
       .about-section {
         flex-direction: column;
         text-align: center;
@@ -130,8 +178,14 @@
       }
 
       .profile-photo-container {
-        width: 180px;
-        height: 180px;
+        width: 200px;
+        height: 200px;
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
       }
     }
   </style>
@@ -156,6 +210,8 @@
     <section id="about" class="about-section">
       <div class="profile-photo-container">
         <img src="mylogo3.jpeg" alt="Kartikeya Singh" class="profile-photo">
+      </div>
+      <div class="about-text">
         <h2>About Me</h2>
         <p>
           I am a researcher specializing in autonomous systems, SLAM, and risk-aware navigation for robots in complex terrains. 
