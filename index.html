@@ -688,12 +688,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // Update the button click handler to this
   document.querySelectorAll('.slider-btn').forEach(btn => {
   btn.addEventListener('click', (e) => {
-    const isNext = e.target.closest('.next-btn');
+    const isNext = e.target.classList.contains('next-btn');
     currentIndex = isNext ? 
       Math.min(currentIndex + 1, slides.length - 1) : 
       Math.max(currentIndex - 1, 0);
     updateSlider();
   });
+});
 
 
 
