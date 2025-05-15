@@ -304,6 +304,136 @@
     flex: 1 1 auto;
     justify-content: center;
   }
+  .pub-carousel {
+  position: relative;
+  margin: 2rem 0;
+  padding: 0 2rem;
+}
+
+.pub-container {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 1rem;
+  scroll-behavior: smooth;
+}
+
+.pub-item {
+  scroll-snap-align: start;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  width: 300px;
+  min-height: 280px;
+  transition: transform 0.3s ease;
+}
+
+.pub-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+.pub-nav:hover {
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prev-pub { left: -10px; }
+.next-pub { right: -10px; }
+
+.pub-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 1rem;
+}
+
+.pub-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ddd;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pub-dot.active {
+  background: var(--primary-color);
+  transform: scale(1.2);
+}
+
+/* Compact Publication Styling */
+.pub-title {
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+  color: var(--primary-color);
+}
+
+.pub-authors {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.pub-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.pub-links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.pub-link {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.pub-link:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .pub-carousel {
+    padding: 0 1rem;
+  }
+  
+  .pub-item {
+    width: 280px;
+  }
+  
+  .pub-nav {
+    display: none;
+  }
+  
+  .pub-container {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
     .news-slider {
@@ -628,6 +758,97 @@ document.addEventListener('DOMContentLoaded', () => {
       Math.max(currentIndex - 1, 0);
     updateSlider();
   });
+
+
+
+  const publications = [
+  {
+    title: "PANOS: Payload-Aware Navigation in Offroad Scenarios",
+    authors: "K. Singh, J. Doe, J. Smith",
+    conference: "ICRA 2025",
+    links: {
+      paper: "#",
+      video: "#",
+      code: "#"
+    }
+  },
+  // Add other publications in same format
+];
+
+function createPubItem(pub) {
+  return `
+    <div class="pub-item">
+      <h3 class="pub-title">${pub.title}</h3>
+      <div class="pub-authors">${pub.authors}</div>
+      <div class="pub-meta">
+        <span class="pub-conference">${pub.conference}</span>
+      </div>
+      <div class="pub-links">
+        <a href="${pub.links.paper}" class="pub-link paper-link">
+          <i class="fas fa-file-pdf"></i> Paper
+        </a>
+        <a href="${pub.links.video}" class="pub-link video-link">
+          <i class="fas fa-video"></i> Video
+        </a>
+        <button class="pub-link cite-link" data-citation="${pub.title}">
+          <i class="fas fa-quote-right"></i> Cite
+        </button>
+        ${pub.links.code ? `
+        <a href="${pub.links.code}" class="pub-link code-link">
+          <i class="fas fa-code"></i> Code
+        </a>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+function initPublications() {
+  const container = document.querySelector('.pub-container');
+  const dotsContainer = document.querySelector('.pub-dots');
+  
+  // Populate publications
+  container.innerHTML = publications.map(createPubItem).join('');
+  
+  // Create dots
+  publications.forEach((_, i) => {
+    const dot = document.createElement('div');
+    dot.classList.add('pub-dot');
+    if(i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => scrollToPub(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  // Navigation
+  let currentIndex = 0;
+  const itemsPerView = Math.floor(container.offsetWidth / 320);
+
+  document.querySelector('.prev-pub').addEventListener('click', () => {
+    currentIndex = Math.max(currentIndex - 1, 0);
+    scrollToPub(currentIndex);
+  });
+
+  document.querySelector('.next-pub').addEventListener('click', () => {
+    currentIndex = Math.min(currentIndex + 1, publications.length - itemsPerView);
+    scrollToPub(currentIndex);
+  });
+
+  function scrollToPub(index) {
+    const itemWidth = document.querySelector('.pub-item').offsetWidth + 24;
+    container.scrollTo({
+      left: index * itemWidth,
+      behavior: 'smooth'
+    });
+    updateDots(index);
+  }
+
+  function updateDots(index) {
+    document.querySelectorAll('.pub-dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === index);
+    });
+  }
+}
+
+document.addEventListener('DOMContentLoaded', initPublications);
 });
 
   // Touch/swipe handling
