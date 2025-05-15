@@ -412,6 +412,31 @@
         font-size: 1.5rem;
       }
     }
+    .pub-gif-container {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pub-gif {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.pub-item:hover .pub-gif {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .pub-gif-container {
+    height: 150px;
+  }
+}
   </style>
 </head>
 
@@ -627,6 +652,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: "PANOS: Payload-Aware Navigation in Offroad Scenarios",
       authors: "K. Singh, J. Doe, J. Smith",
       conference: "ICRA 2025",
+      gif: "panos-demo.gif",
       links: { paper: "#", video: "#", code: "#" }
     },
     // Add more publications as needed
@@ -690,6 +716,34 @@ document.addEventListener('DOMContentLoaded', () => {
       container.scrollTo({ left: index * itemWidth, behavior: 'smooth' });
       updatePubDots(index);
     }
+
+    function createPubItem(pub) {
+    return `
+      <div class="pub-item">
+        <div class="pub-gif-container">
+          <img src="${pub.gif}" alt="${pub.title} demonstration" 
+               class="pub-gif" loading="lazy">
+        </div>
+        <h3 class="pub-title">${pub.title}</h3>
+        <div class="pub-authors">${pub.authors}</div>
+        <div class="pub-meta">
+          <span class="pub-conference">${pub.conference}</span>
+        </div>
+        <div class="pub-links">
+          <a href="${pub.links.paper}" class="pub-link paper-link">
+            <i class="fas fa-file-pdf"></i> Paper
+          </a>
+          <a href="${pub.links.video}" class="pub-link video-link">
+            <i class="fas fa-video"></i> Video
+          </a>
+          ${pub.links.code ? `
+          <a href="${pub.links.code}" class="pub-link code-link">
+            <i class="fas fa-code"></i> Code
+          </a>` : ''}
+        </div>
+      </div>
+    `;
+  }
 
     function updatePubDots(index) {
       document.querySelectorAll('.pub-dot').forEach((dot, i) => {
