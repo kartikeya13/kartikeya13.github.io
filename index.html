@@ -562,143 +562,49 @@
 
   <script>
 document.addEventListener('DOMContentLoaded', () => {
+  // News Slider Functionality
   const slider = document.querySelector('.slide-container');
   const slides = document.querySelectorAll('.slide-item');
   const dotsContainer = document.querySelector('.slider-dots');
   let currentIndex = 0;
+  const slideGap = 24; // Match the CSS gap value
 
-  // Create dots
+  // Initialize slider dots
   slides.forEach((_, index) => {
     const dot = document.createElement('div');
     dot.classList.add('dot');
-    if(index === 0) dot.classList.add('active');
+    index === 0 && dot.classList.add('active');
     dot.addEventListener('click', () => goToSlide(index));
     dotsContainer.appendChild(dot);
   });
 
-  // Button click handlers
-  // Update the button click handler to this
+  // Slider navigation handlers
   document.querySelectorAll('.slider-btn').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    const isNext = e.target.classList.contains('next-btn');
-    currentIndex = isNext ? 
-      Math.min(currentIndex + 1, slides.length - 1) : 
-      Math.max(currentIndex - 1, 0);
-    updateSlider();
-  });
-});
-
-
-
-  const publications = [
-  {
-    title: "PANOS: Payload-Aware Navigation in Offroad Scenarios",
-    authors: "K. Singh, J. Doe, J. Smith",
-    conference: "ICRA 2025",
-    links: {
-      paper: "#",
-      video: "#",
-      code: "#"
-    }
-  },
-  // Add other publications in same format
-];
-
-function createPubItem(pub) {
-  return `
-    <div class="pub-item">
-      <h3 class="pub-title">${pub.title}</h3>
-      <div class="pub-authors">${pub.authors}</div>
-      <div class="pub-meta">
-        <span class="pub-conference">${pub.conference}</span>
-      </div>
-      <div class="pub-links">
-        <a href="${pub.links.paper}" class="pub-link paper-link">
-          <i class="fas fa-file-pdf"></i> Paper
-        </a>
-        <a href="${pub.links.video}" class="pub-link video-link">
-          <i class="fas fa-video"></i> Video
-        </a>
-        <button class="pub-link cite-link" data-citation="${pub.title}">
-          <i class="fas fa-quote-right"></i> Cite
-        </button>
-        ${pub.links.code ? `
-        <a href="${pub.links.code}" class="pub-link code-link">
-          <i class="fas fa-code"></i> Code
-        </a>` : ''}
-      </div>
-    </div>
-  `;
-}
-
-function initPublications() {
-  const container = document.querySelector('.pub-container');
-  const dotsContainer = document.querySelector('.pub-dots');
-  
-  // Populate publications
-  container.innerHTML = publications.map(createPubItem).join('');
-  
-  // Create dots
-  publications.forEach((_, i) => {
-    const dot = document.createElement('div');
-    dot.classList.add('pub-dot');
-    if(i === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => scrollToPub(i));
-    dotsContainer.appendChild(dot);
-  });
-
-  // Navigation
-  let currentIndex = 0;
-  const itemsPerView = Math.floor(container.offsetWidth / 320);
-
-  document.querySelector('.prev-pub').addEventListener('click', () => {
-    currentIndex = Math.max(currentIndex - 1, 0);
-    scrollToPub(currentIndex);
-  });
-
-  document.querySelector('.next-pub').addEventListener('click', () => {
-    currentIndex = Math.min(currentIndex + 1, publications.length - itemsPerView);
-    scrollToPub(currentIndex);
-  });
-
-  function scrollToPub(index) {
-    const itemWidth = document.querySelector('.pub-item').offsetWidth + 24;
-    container.scrollTo({
-      left: index * itemWidth,
-      behavior: 'smooth'
+    btn.addEventListener('click', (e) => {
+      const isNext = e.target.classList.contains('next-btn');
+      currentIndex = isNext ? 
+        Math.min(currentIndex + 1, slides.length - 1) : 
+        Math.max(currentIndex - 1, 0);
+      updateSlider();
     });
-    updateDots(index);
-  }
-
-  function updateDots(index) {
-    document.querySelectorAll('.pub-dot').forEach((dot, i) => {
-      dot.classList.toggle('active', i === index);
-    });
-  }
-}
-
-document.addEventListener('DOMContentLoaded', initPublications);
-});
+  });
 
   // Touch/swipe handling
   let touchStartX = 0;
-  let touchEndX = 0;
-
   slider.parentElement.addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
+    touchStartX = e.changedTouches[0].clientX;
   });
 
   slider.parentElement.addEventListener('touchend', e => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    Math.abs(diff) > 50 && handleSwipe(diff > 0);
   });
 
-  function handleSwipe() {
-    if (touchStartX - touchEndX > 50) {
-      currentIndex = Math.min(currentIndex + 1, slides.length - 1);
-    } else if (touchEndX - touchStartX > 50) {
-      currentIndex = Math.max(currentIndex - 1, 0);
-    }
+  function handleSwipe(isNext) {
+    currentIndex = isNext ? 
+      Math.min(currentIndex + 1, slides.length - 1) : 
+      Math.max(currentIndex - 1, 0);
     updateSlider();
   }
 
@@ -708,13 +614,96 @@ document.addEventListener('DOMContentLoaded', initPublications);
   }
 
   function updateSlider() {
-    const slideWidth = slides[0].offsetWidth + 24;
+    const slideWidth = slides[0].offsetWidth + slideGap;
     slider.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-    
-    document.querySelectorAll('.dot').forEach((dot, index) => {
-      dot.classList.toggle('active', index === currentIndex);
+    document.querySelectorAll('.dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentIndex);
     });
   }
+
+  // Publications Carousel Functionality
+  const publications = [
+    {
+      title: "PANOS: Payload-Aware Navigation in Offroad Scenarios",
+      authors: "K. Singh, J. Doe, J. Smith",
+      conference: "ICRA 2025",
+      links: { paper: "#", video: "#", code: "#" }
+    },
+    // Add more publications as needed
+  ];
+
+  function initPublications() {
+    const container = document.querySelector('.pub-container');
+    const dotsContainer = document.querySelector('.pub-dots');
+    
+    // Populate publications
+    container.innerHTML = publications.map(pub => `
+      <div class="pub-item">
+        <h3 class="pub-title">${pub.title}</h3>
+        <div class="pub-authors">${pub.authors}</div>
+        <div class="pub-meta">
+          <span class="pub-conference">${pub.conference}</span>
+        </div>
+        <div class="pub-links">
+          <a href="${pub.links.paper}" class="pub-link paper-link">
+            <i class="fas fa-file-pdf"></i> Paper
+          </a>
+          <a href="${pub.links.video}" class="pub-link video-link">
+            <i class="fas fa-video"></i> Video
+          </a>
+          <button class="pub-link cite-link" data-citation="${pub.title}">
+            <i class="fas fa-quote-right"></i> Cite
+          </button>
+          ${pub.links.code ? `
+          <a href="${pub.links.code}" class="pub-link code-link">
+            <i class="fas fa-code"></i> Code
+          </a>` : ''}
+        </div>
+      </div>
+    `).join('');
+
+    // Initialize dots
+    publications.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.classList.add('pub-dot');
+      i === 0 && dot.classList.add('active');
+      dot.addEventListener('click', () => scrollToPub(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    // Carousel navigation
+    let pubIndex = 0;
+    const itemsPerView = Math.floor(container.offsetWidth / 300);
+
+    document.querySelector('.prev-pub').addEventListener('click', () => {
+      pubIndex = Math.max(pubIndex - 1, 0);
+      scrollToPub(pubIndex);
+    });
+
+    document.querySelector('.next-pub').addEventListener('click', () => {
+      pubIndex = Math.min(pubIndex + 1, publications.length - itemsPerView);
+      scrollToPub(pubIndex);
+    });
+
+    function scrollToPub(index) {
+      const itemWidth = document.querySelector('.pub-item').offsetWidth + 24;
+      container.scrollTo({ left: index * itemWidth, behavior: 'smooth' });
+      updatePubDots(index);
+    }
+
+    function updatePubDots(index) {
+      document.querySelectorAll('.pub-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+  }
+
+  initPublications();
+
+  // Mobile menu toggle
+  document.querySelector('.menu-toggle').addEventListener('click', () => {
+    document.querySelector('.nav').classList.toggle('active');
+  });
 });
 </script>
 
