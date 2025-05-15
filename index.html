@@ -430,16 +430,16 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Button click handlers
+  // Update the button click handler to this
   document.querySelectorAll('.slider-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      if(e.target.classList.contains('next-btn')) {
-        currentIndex = Math.min(currentIndex + 1, slides.length - 1);
-      } else {
-        currentIndex = Math.max(currentIndex - 1, 0);
-      }
-      updateSlider();
-    });
+  btn.addEventListener('click', (e) => {
+    const isNext = e.target.closest('.next-btn');
+    currentIndex = isNext ? 
+      Math.min(currentIndex + 1, slides.length - 1) : 
+      Math.max(currentIndex - 1, 0);
+    updateSlider();
   });
+});
 
   // Touch/swipe handling
   let touchStartX = 0;
