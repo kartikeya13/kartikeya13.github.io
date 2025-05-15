@@ -128,10 +128,199 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
-    .news-grid {
-      grid-template-columns: 1fr;
+    /* News Slider Styles */
+    .news-slider {
+      position: relative;
+      margin: 2rem 0;
+      overflow: hidden;
+    }
+
+    .slide-container {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      gap: 1.5rem;
+      padding-bottom: 2rem;
+    }
+
+    .slide-item {
+      position: relative;
+      min-width: 300px;
+      flex: 0 0 calc(33.333% - 1rem);
+      background: white;
+      padding: 1.5rem 1.5rem 4rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    }
+
+    .card-controls {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
       gap: 1.5rem;
     }
+
+    .slider-btn {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .slider-btn:hover {
+      background: var(--secondary-color);
+      transform: scale(1.1);
+    }
+
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .slider-dots .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ddd;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .slider-dots .dot.active {
+      background: var(--primary-color);
+      transform: scale(1.2);
+    }
+
+    /* Publications Carousel Styles */
+    .pub-carousel {
+      position: relative;
+      margin: 2rem 0;
+      padding: 0 2rem;
+    }
+
+    .pub-container {
+      display: grid;
+      grid-auto-flow: column;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 1rem;
+      scroll-behavior: smooth;
+    }
+
+    .pub-item {
+      scroll-snap-align: start;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      width: 300px;
+      min-height: 280px;
+      transition: transform 0.3s ease;
+    }
+
+    .pub-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 2;
+      opacity: 0.9;
+      transition: all 0.3s ease;
+    }
+
+    .pub-nav:hover {
+      opacity: 1;
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .prev-pub { left: -10px; }
+    .next-pub { right: -10px; }
+
+    .pub-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 1rem;
+    }
+
+    .pub-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ddd;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .pub-dot.active {
+      background: var(--primary-color);
+      transform: scale(1.2);
+    }
+
+    .pub-title {
+      font-size: 1rem;
+      margin: 0 0 0.5rem;
+      color: var(--primary-color);
+    }
+
+    .pub-authors {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+    }
+
+    .pub-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .pub-links {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+
+    .pub-link {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.5rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      text-align: center;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .pub-link:hover {
+      transform: translateY(-2px);
+    }
+
+    .paper-link { background: var(--primary-color); color: white; }
+    .video-link { background: var(--accent-color); color: white; }
+    .cite-link { background: var(--light-bg); color: var(--text-color); }
+    .code-link { background: var(--secondary-color); color: white; }
 
     @media (max-width: 768px) {
       .container {
@@ -177,333 +366,34 @@
         padding: 1rem;
       }
 
-      .news-card {
-        padding: 1rem;
+      .slide-item {
+        min-width: 85%;
+        flex: 0 0 calc(100% - 2rem);
+        padding: 1.5rem 1.5rem 4rem;
+      }
+
+      .slider-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+
+      .card-controls {
+        gap: 1rem;
+      }
+
+      .pub-carousel {
+        padding: 0 1rem;
+      }
+
+      .pub-item {
+        width: 280px;
+      }
+
+      .pub-nav {
+        display: none;
       }
     }
-
-
-
-
-    .publications-grid {
-  display: grid;
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-.publication-card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.publication-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-}
-
-.pub-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 0.75rem;
-}
-
-.pub-title {
-  font-size: 1.1rem;
-  color: var(--primary-color);
-  margin: 0;
-  flex: 1;
-}
-
-.pub-conference {
-  font-size: 0.9rem;
-  background: var(--light-bg);
-  color: var(--secondary-color);
-  padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  margin-left: 1rem;
-}
-
-.pub-authors {
-  font-size: 0.95rem;
-  color: var(--text-color);
-  margin-bottom: 1rem;
-  opacity: 0.9;
-}
-
-.pub-abstract {
-  font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-}
-
-.pub-links {
-  display: flex;
-  gap: 1rem;
-  border-top: 1px solid #eee;
-  padding-top: 1rem;
-}
-
-.pub-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
-}
-
-.paper-link {
-  background: var(--primary-color);
-  color: white;
-}
-
-.video-link {
-  background: var(--accent-color);
-  color: white;
-}
-
-.cite-link {
-  background: var(--light-bg);
-  color: var(--text-color);
-  border: none;
-  cursor: pointer;
-}
-
-.pub-link:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
-}
-
-.pub-link i {
-  font-size: 0.9rem;
-}
-
-@media (max-width: 768px) {
-  .pub-header {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .pub-conference {
-    align-self: flex-start;
-    margin-left: 0;
-  }
-  
-  .pub-links {
-    flex-wrap: wrap;
-  }
-  
-  .pub-link {
-    flex: 1 1 auto;
-    justify-content: center;
-  }
-  
-
-.pub-container {
-  display: grid;
-  grid-auto-flow: column;
-  gap: 1.5rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: 1rem;
-  scroll-behavior: smooth;
-}
-
-.pub-item {
-  scroll-snap-align: start;
-  background: white;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  width: 300px;
-  min-height: 280px;
-  transition: transform 0.3s ease;
-}
-
-.pub-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: var(--primary-color);
-  color: white;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 2;
-  opacity: 0.9;
-  transition: all 0.3s ease;
-}
-
-.pub-nav:hover {
-  opacity: 1;
-  transform: translateY(-50%) scale(1.1);
-}
-
-.prev-pub { left: -10px; }
-.next-pub { right: -10px; }
-
-.pub-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 1rem;
-}
-
-.pub-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #ddd;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.pub-dot.active {
-  background: var(--primary-color);
-  transform: scale(1.2);
-}
-
-/* Compact Publication Styling */
-.pub-title {
-  font-size: 1rem;
-  margin: 0 0 0.5rem;
-  color: var(--primary-color);
-}
-
-.pub-authors {
-  font-size: 0.85rem;
-  color: #666;
-  margin-bottom: 0.5rem;
-}
-
-.pub-meta {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.8rem;
-  margin-bottom: 1rem;
-}
-
-.pub-links {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
-}
-
-.pub-link {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  padding: 0.5rem;
-  border-radius: 6px;
-  font-size: 0.8rem;
-  text-align: center;
-  transition: all 0.2s ease;
-}
-
-.pub-link:hover {
-  transform: translateY(-2px);
-}
-
-@media (max-width: 768px) {
-  .pub-carousel {
-    padding: 0 1rem;
-  }
-  
-  .pub-item {
-    width: 280px;
-  }
-  
-  .pub-nav {
-    display: none;
-  }
-  
-  .pub-container {
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-  }
-}
-
-    .news-slider {
-  position: relative;
-  margin: 2rem 0;
-  overflow: hidden;
-}
-
-.slide-container {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-  gap: 1.5rem;
-  padding-bottom: 2rem;
-}
-
-.slide-item {
-  position: relative;
-  min-width: 300px;
-  flex: 0 0 calc(33.333% - 1rem);
-  background: white;
-  padding: 1.5rem 1.5rem 4rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-}
-
-.card-controls {
-  position: absolute;
-  bottom: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 1.5rem;
-}
-
-.slider-btn {
-  background: var(--primary-color);
-  color: white;
-  border: none;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 1.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.slider-btn:hover {
-  background: var(--secondary-color);
-  transform: scale(1.1);
-}
-
-@media (max-width: 768px) {
-  .slide-item {
-    min-width: 85%;
-    flex: 0 0 calc(100% - 2rem);
-    padding: 1.5rem 1.5rem 4rem;
-  }
-  
-  .slider-btn {
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
-  }
-  
-  .card-controls {
-    gap: 1rem;
-  }
-
-}
-    
 
     @media (max-width: 480px) {
       .header {
@@ -548,6 +438,7 @@
   </div>
 
   <div class="container">
+    <!-- About Section -->
     <section id="about" class="about-section">
       <div class="profile-photo-container">
         <img src="mylogo3.jpeg" alt="Kartikeya Singh" class="profile-photo">
@@ -563,42 +454,44 @@
       </div>
     </section>
 
-   <section id="news" class="section">
-  <h2>Latest News</h2>
-  <div class="news-slider">
-    <div class="slide-container">
-      <div class="slide-item">
-        <div class="news-date">May 2024</div>
-        <h3>Our Paper Accepted at Workshop in Field Robotics at ICRA 2025</h3>
-        <p>Recognized as one of the top 10 emerging researchers at the Workshop on Field Robotics during ICRA 2025 in Atlanta, Georgia</p>
-        <div class="card-controls">
-          <button class="slider-btn prev-btn">&lt;</button>
-          <button class="slider-btn next-btn">&gt;</button>
+    <!-- News Section -->
+    <section id="news" class="section">
+      <h2>Latest News</h2>
+      <div class="news-slider">
+        <div class="slide-container">
+          <div class="slide-item">
+            <div class="news-date">May 2024</div>
+            <h3>Our Paper Accepted at Workshop in Field Robotics at ICRA 2025</h3>
+            <p>Recognized as one of the top 10 emerging researchers at the Workshop on Field Robotics during ICRA 2025 in Atlanta, Georgia</p>
+            <div class="card-controls">
+              <button class="slider-btn prev-btn">&lt;</button>
+              <button class="slider-btn next-btn">&gt;</button>
+            </div>
+          </div>
+          <div class="slide-item">
+            <div class="news-date">May 2024</div>
+            <h3>New Collaboration with Boston Dynamics</h3>
+            <p>Started new research collaboration focusing on Spot robot navigation in industrial environments.</p>
+            <div class="card-controls">
+              <button class="slider-btn prev-btn">&lt;</button>
+              <button class="slider-btn next-btn">&gt;</button>
+            </div>
+          </div>
+          <div class="slide-item">
+            <div class="news-date">April 2024</div>
+            <h3>Best Paper Nomination at ICRA</h3>
+            <p>L-DYNO framework nominated for best paper in robotic perception category.</p>
+            <div class="card-controls">
+              <button class="slider-btn prev-btn">&lt;</button>
+              <button class="slider-btn next-btn">&gt;</button>
+            </div>
+          </div>
         </div>
+        <div class="slider-dots"></div>
       </div>
-      <div class="slide-item">
-        <div class="news-date">May 2024</div>
-        <h3>New Collaboration with Boston Dynamics</h3>
-        <p>Started new research collaboration focusing on Spot robot navigation in industrial environments.</p>
-        <div class="card-controls">
-          <button class="slider-btn prev-btn">&lt;</button>
-          <button class="slider-btn next-btn">&gt;</button>
-        </div>
-      </div>
-      <div class="slide-item">
-        <div class="news-date">April 2024</div>
-        <h3>Best Paper Nomination at ICRA</h3>
-        <p>L-DYNO framework nominated for best paper in robotic perception category.</p>
-        <div class="card-controls">
-          <button class="slider-btn prev-btn">&lt;</button>
-          <button class="slider-btn next-btn">&gt;</button>
-        </div>
-      </div>
-    </div>
-    <div class="slider-dots"></div>
-  </div>
-</section>
+    </section>
 
+    <!-- Education Section -->
     <section id="education" class="section">
       <h2>Education</h2>
       <ul class="education">
@@ -607,11 +500,12 @@
           Advisor: Prof. Karthik Dantu
         </li>
         <li><strong>B.Tech in Computer Science</strong><br>
-          Amity University, Lucknow (2016–2020)<br>
+          Amity University, Lucknow (2016–2020)
         </li>
       </ul>
     </section>
 
+    <!-- Experience Section -->
     <section id="experience" class="section">
       <h2>Research and Teaching Experience</h2>
       <ul class="experience">
@@ -633,20 +527,18 @@
       </ul>
     </section>
 
-    
-
-
+    <!-- Publications Section -->
     <section id="publications" class="section">
-  <h2>Publications</h2>
-  <div class="pub-carousel">
-    <div class="pub-container"></div>
-    <button class="pub-nav prev-pub">&lt;</button>
-    <button class="pub-nav next-pub">&gt;</button>
-    <div class="pub-dots"></div>
-  </div>
-</section>
-</section>
+      <h2>Publications</h2>
+      <div class="pub-carousel">
+        <div class="pub-container"></div>
+        <button class="pub-nav prev-pub">&lt;</button>
+        <button class="pub-nav next-pub">&gt;</button>
+        <div class="pub-dots"></div>
+      </div>
+    </section>
 
+    <!-- Skills Section -->
     <section id="skills" class="section">
       <h2>Skills</h2>
       <ul class="skills">
