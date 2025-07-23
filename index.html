@@ -241,25 +241,58 @@
       color: var(--accent-color);
     }
 
-    /* Publications Styles */
+    /* Publications Styles - UPDATED FOR GIFS */
     .publications-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 1.5rem;
+      gap: 2rem;
       margin-top: 1.5rem;
     }
 
     .pub-item {
+      display: flex;
+      flex-direction: column;
       padding: 1.5rem;
       background: var(--light-bg);
       border-radius: 8px;
       border: 1px solid var(--raw-border);
-      transition: transform 0.3s ease;
+      transition: all 0.3s ease;
+      overflow: hidden;
     }
 
     .pub-item:hover {
       transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
       border-color: var(--secondary-color);
+    }
+
+    .pub-gif-container {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      background: #f0f2f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .pub-gif {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 4px;
+      transition: transform 0.3s ease;
+    }
+
+    .pub-item:hover .pub-gif {
+      transform: scale(1.03);
+    }
+
+    .pub-details {
+      flex: 1;
     }
 
     .pub-title {
@@ -271,6 +304,7 @@
       font-size: 0.9rem;
       color: #666;
       margin-bottom: 0.5rem;
+      line-height: 1.4;
     }
 
     .pub-meta {
@@ -285,6 +319,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
       gap: 0.5rem;
+      margin-top: 1rem;
     }
 
     .pub-link {
@@ -298,11 +333,13 @@
       transition: all 0.2s ease;
       text-decoration: none;
       border: 1px solid;
+      text-align: center;
     }
 
     .pub-link:hover {
       transform: translateY(-2px);
       opacity: 0.9;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
     }
 
     .paper-link { 
@@ -324,6 +361,11 @@
       background: rgba(78, 79, 235, 0.1); 
       color: var(--secondary-color);
       border-color: rgba(78, 79, 235, 0.2);
+    }
+    .gif-link { 
+      background: rgba(76, 175, 80, 0.1); 
+      color: #4CAF50;
+      border-color: rgba(76, 175, 80, 0.2);
     }
 
     /* Experience Styles */
@@ -470,6 +512,10 @@
       .education-icon {
         display: none;
       }
+      
+      .pub-gif-container {
+        height: 180px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -487,6 +533,14 @@
 
       h2 {
         font-size: 1.5rem;
+      }
+      
+      .pub-gif-container {
+        height: 160px;
+      }
+      
+      .pub-links {
+        grid-template-columns: 1fr 1fr;
       }
     }
   </style>
@@ -519,7 +573,7 @@
       <h2>About Me</h2>
       <div class="about-section">
         <div class="profile-photo-container">
-          <img src="mylogo3.jpeg" alt="Kartikeya Singh" class="profile-photo">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" alt="Kartikeya Singh" class="profile-photo">
         </div>
         <div class="about-text">
           <p>
@@ -617,77 +671,113 @@
       </div>
     </section>
 
-    <!-- Publications Section -->
+    <!-- Publications Section - UPDATED WITH GIF SUPPORT -->
     <section id="publications" class="section">
       <h2>Publications</h2>
       <div class="publications-grid">
         <div class="pub-item">
-          <h3 class="pub-title">CART: Context-Aware Terrain Adaptation for Stable Locomotion</h3>
-          <div class="pub-authors">K Singh, Y Kim, Y Turkar, K Dantu</div>
-          <div class="pub-meta">
-            <span class="pub-conference">RaL 2025</span>
+          <div class="pub-gif-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzN0dTl0Z2J3cG5xamNxY3A0b3h4bGJpemVkZ2J5c2d6bHd4cWY0aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/5wWf7GR2nhgamhRnEuA/giphy.gif" alt="CART Demo" class="pub-gif">
           </div>
-          <div class="pub-links">
-            <a href="#" class="pub-link paper-link">
-              <i class="fas fa-file-pdf"></i> Paper
-            </a>
-            <a href="#" class="pub-link video-link">
-              <i class="fas fa-video"></i> Video
-            </a>
-            <a href="#" class="pub-link code-link">
-              <i class="fas fa-code"></i> Code
-            </a>
-          </div>
-        </div>
-
-        <div class="pub-item">
-          <h3 class="pub-title">Autonomous Culvert Inspection on the Erie Canal using Legged Robots</h3>
-          <div class="pub-authors">K Singh, Y Turkar, Y Kim, M Lengel, K Dantu</div>
-          <div class="pub-meta">
-            <span class="pub-conference">ICRA 2025 (WFR)</span>
-          </div>
-          <div class="pub-links">
-            <a href="#" class="pub-link paper-link">
-              <i class="fas fa-file-pdf"></i> Paper
-            </a>
-            <a href="#" class="pub-link video-link">
-              <i class="fas fa-video"></i> Video
-            </a>
+          <div class="pub-details">
+            <h3 class="pub-title">CART: Context-Aware Terrain Adaptation for Stable Locomotion</h3>
+            <div class="pub-authors">K Singh, Y Kim, Y Turkar, K Dantu</div>
+            <div class="pub-meta">
+              <span class="pub-conference">RaL 2025</span>
+              <span class="pub-date">June 2025</span>
+            </div>
+            <div class="pub-links">
+              <a href="#" class="pub-link paper-link">
+                <i class="fas fa-file-pdf"></i> Paper
+              </a>
+              <a href="#" class="pub-link video-link">
+                <i class="fas fa-video"></i> Video
+              </a>
+              <a href="#" class="pub-link code-link">
+                <i class="fas fa-code"></i> Code
+              </a>
+              <a href="#" class="pub-link gif-link">
+                <i class="fas fa-expand"></i> GIF
+              </a>
+            </div>
           </div>
         </div>
 
         <div class="pub-item">
-          <h3 class="pub-title">L-DYNO: Framework to Learn Consistent Visual Features Using Robot’s Motion</h3>
-          <div class="pub-authors">K Singh, C Adhivarahan, K Dantu</div>
-          <div class="pub-meta">
-            <span class="pub-conference">ICRA 2025</span>
+          <div class="pub-gif-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdDZqZ2N5eGQ4dHF3M2N5aGg3YzZ3c3I1c3V5d3M2eWZzd2d0Y2R4OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7qE1YN7aBOFPRw8E/giphy.gif" alt="Culvert Inspection" class="pub-gif">
           </div>
-          <div class="pub-links">
-            <a href="#" class="pub-link paper-link">
-              <i class="fas fa-file-pdf"></i> Paper
-            </a>
-            <a href="#" class="pub-link video-link">
-              <i class="fas fa-video"></i> Video
-            </a>
-            <a href="#" class="pub-link code-link">
-              <i class="fas fa-code"></i> Code
-            </a>
+          <div class="pub-details">
+            <h3 class="pub-title">Autonomous Culvert Inspection on the Erie Canal using Legged Robots</h3>
+            <div class="pub-authors">K Singh, Y Turkar, Y Kim, M Lengel, K Dantu</div>
+            <div class="pub-meta">
+              <span class="pub-conference">ICRA 2025 (WFR)</span>
+              <span class="pub-date">May 2025</span>
+            </div>
+            <div class="pub-links">
+              <a href="#" class="pub-link paper-link">
+                <i class="fas fa-file-pdf"></i> Paper
+              </a>
+              <a href="#" class="pub-link video-link">
+                <i class="fas fa-video"></i> Video
+              </a>
+              <a href="#" class="pub-link gif-link">
+                <i class="fas fa-expand"></i> GIF
+              </a>
+            </div>
           </div>
         </div>
 
         <div class="pub-item">
-          <h3 class="pub-title">OFFSEG: A Semantic Segmentation Framework for Off-Road Driving</h3>
-          <div class="pub-authors">K Viswanath*, K Singh*, P Jiang, PB Sujit, S Saripalli</div>
-          <div class="pub-meta">
-            <span class="pub-conference">CASE 2021</span>
+          <div class="pub-gif-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzF1eDl6a2t2d3B1NnZ2d3l5Y2JpN3l0dDg0d2drc3R4c2VqN3JjYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKsQ8UQ3XhXAt5e/giphy.gif" alt="L-DYNO Demo" class="pub-gif">
           </div>
-          <div class="pub-links">
-            <a href="#" class="pub-link paper-link">
-              <i class="fas fa-file-pdf"></i> Paper
-            </a>
-            <a href="#" class="pub-link code-link">
-              <i class="fas fa-code"></i> Code
-            </a>
+          <div class="pub-details">
+            <h3 class="pub-title">L-DYNO: Framework to Learn Consistent Visual Features Using Robot's Motion</h3>
+            <div class="pub-authors">K Singh, C Adhivarahan, K Dantu</div>
+            <div class="pub-meta">
+              <span class="pub-conference">ICRA 2025</span>
+              <span class="pub-date">April 2025</span>
+            </div>
+            <div class="pub-links">
+              <a href="#" class="pub-link paper-link">
+                <i class="fas fa-file-pdf"></i> Paper
+              </a>
+              <a href="#" class="pub-link video-link">
+                <i class="fas fa-video"></i> Video
+              </a>
+              <a href="#" class="pub-link code-link">
+                <i class="fas fa-code"></i> Code
+              </a>
+              <a href="#" class="pub-link gif-link">
+                <i class="fas fa-expand"></i> GIF
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-gif-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbW5hM3k2dG1hZzQ0c2l1bDJ0Z2d1Z3I4Y3B2Z3lqM3VjZjJxY2E0aCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3o7TKsahb85eCvI0Gc/giphy.gif" alt="OFFSEG Demo" class="pub-gif">
+          </div>
+          <div class="pub-details">
+            <h3 class="pub-title">OFFSEG: A Semantic Segmentation Framework for Off-Road Driving</h3>
+            <div class="pub-authors">K Viswanath*, K Singh*, P Jiang, PB Sujit, S Saripalli</div>
+            <div class="pub-meta">
+              <span class="pub-conference">CASE 2021</span>
+              <span class="pub-date">August 2021</span>
+            </div>
+            <div class="pub-links">
+              <a href="#" class="pub-link paper-link">
+                <i class="fas fa-file-pdf"></i> Paper
+              </a>
+              <a href="#" class="pub-link code-link">
+                <i class="fas fa-code"></i> Code
+              </a>
+              <a href="#" class="pub-link gif-link">
+                <i class="fas fa-expand"></i> GIF
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -812,6 +902,19 @@
               top: target.offsetTop - 80,
               behavior: 'smooth'
             });
+          }
+        });
+      });
+      
+      // GIF expand functionality
+      document.querySelectorAll('.pub-gif').forEach(gif => {
+        gif.addEventListener('click', function() {
+          if (this.classList.contains('expanded')) {
+            this.classList.remove('expanded');
+            this.closest('.pub-gif-container').classList.remove('expanded');
+          } else {
+            this.classList.add('expanded');
+            this.closest('.pub-gif-container').classList.add('expanded');
           }
         });
       });
