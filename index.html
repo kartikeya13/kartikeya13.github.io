@@ -121,11 +121,18 @@
       border: 1px solid var(--raw-border);
     }
 
+    /* NEW: Container for about and news */
+    .about-news-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin: 2rem 0;
+    }
+
     .about-section {
       display: flex;
-      gap: 40px;
-      margin: 2rem 0;
-      align-items: center;
+      flex-direction: column;
+      gap: 20px;
     }
 
     .about-text {
@@ -133,15 +140,32 @@
     }
 
     .profile-photo-container {
-      flex: 0 0 250px;
+      width: 100%;
     }
 
-    /* News Styles */
+    /* News Styles - UPDATED FOR SCROLLABLE PANEL */
+    .news-panel {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-panel h2 {
+      margin-top: 0;
+      padding-bottom: 15px;
+      border-bottom: 2px solid var(--secondary-color);
+    }
+
+    .news-container {
+      overflow-y: auto;
+      max-height: 500px;
+      padding-right: 10px;
+    }
+
     .news-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: 1fr;
       gap: 1.5rem;
-      margin-top: 1.5rem;
     }
 
     .news-item {
@@ -150,11 +174,13 @@
       border-radius: 8px;
       border: 1px solid var(--raw-border);
       transition: transform 0.3s ease;
+      position: relative;
     }
 
     .news-item:hover {
-      transform: translateY(-5px);
+      transform: translateY(-3px);
       border-color: var(--secondary-color);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
     .news-date {
@@ -162,6 +188,32 @@
       color: var(--secondary-color);
       margin-bottom: 0.5rem;
       font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+
+    .news-date i {
+      margin-right: 8px;
+      font-size: 1rem;
+    }
+
+    /* Scrollbar styling for news container */
+    .news-container::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .news-container::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    .news-container::-webkit-scrollbar-thumb {
+      background: var(--secondary-color);
+      border-radius: 10px;
+    }
+
+    .news-container::-webkit-scrollbar-thumb:hover {
+      background: #3a3ac7;
     }
 
     /* Education Styles */
@@ -241,7 +293,7 @@
       color: var(--accent-color);
     }
 
-    /* Publications Styles - UPDATED FOR GIFS */
+    /* Publications Styles */
     .publications-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -484,8 +536,9 @@
         font-size: 1.1rem;
       }
 
-      .about-section {
-        flex-direction: column;
+      /* NEW: Adjust layout for mobile */
+      .about-news-container {
+        grid-template-columns: 1fr;
         gap: 20px;
       }
 
@@ -515,6 +568,10 @@
       
       .pub-gif-container {
         height: 180px;
+      }
+      
+      .news-container {
+        max-height: 350px;
       }
     }
 
@@ -568,50 +625,89 @@
   </div>
 
   <div class="container">
-    <!-- About Section -->
-    <section id="about" class="section">
-      <h2>About Me</h2>
-      <div class="about-section">
-        <div class="profile-photo-container">
-          <img src="f.png" alt="Kartikeya Singh" class="profile-photo">
+    <!-- About Section and News Panel Side by Side -->
+    <div class="about-news-container">
+      <!-- About Section -->
+      <section id="about" class="section">
+        <h2>About Me</h2>
+        <div class="about-section">
+          <div class="profile-photo-container">
+            <img src="f.png" alt="Kartikeya Singh" class="profile-photo">
+          </div>
+          <div class="about-text">
+            <p>
+              I am a researcher specializing in autonomous systems, SLAM, and risk-aware navigation for robots in complex terrains. 
+              My work spans developing algorithms for robust perception and navigation. Currently, I am a Ph.D. student at the 
+              University at Buffalo, working in the Distributed Robotics and Networked Embedded Sensing (DRONES) Lab under 
+              Prof. Karthik Dantu.
+            </p>
+            <p>
+              My research focuses on enabling legged robots to navigate challenging environments through innovative approaches 
+              in visual perception and dynamic motion planning. I'm passionate about creating robotic systems that can operate 
+              autonomously in real-world scenarios.
+            </p>
+          </div>
         </div>
-        <div class="about-text">
-          <p>
-            I am a researcher specializing in autonomous systems, SLAM, and risk-aware navigation for robots in complex terrains. 
-            My work spans developing algorithms for robust perception and navigation. Currently, I am a Ph.D. student at the 
-            University at Buffalo, working in the Distributed Robotics and Networked Embedded Sensing (DRONES) Lab under 
-            Prof. Karthik Dantu.
-          </p>
-          <p>
-            My research focuses on enabling legged robots to navigate challenging environments through innovative approaches 
-            in visual perception and dynamic motion planning. I'm passionate about creating robotic systems that can operate 
-            autonomously in real-world scenarios.
-          </p>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- News Section -->
-    <section id="news" class="section">
-      <h2>Latest News</h2>
-      <div class="news-grid">
-        <div class="news-item">
-          <div class="news-date">May 2024</div>
-          <h3>Our Paper Accepted at Workshop in Field Robotics at ICRA 2025</h3>
-          <p>Recognized as one of the top 10 emerging researchers at the Workshop on Field Robotics during ICRA 2025 in Atlanta, Georgia</p>
+      <!-- News Section as Scrollable Panel -->
+      <section id="news" class="section news-panel">
+        <h2>Latest News</h2>
+        <div class="news-container">
+          <div class="news-grid">
+            <div class="news-item">
+              <div class="news-date">
+                <i class="fas fa-calendar-alt"></i> May 2024
+              </div>
+              <h3>Our Paper Accepted at Workshop in Field Robotics at ICRA 2025</h3>
+              <p>Recognized as one of the top 10 emerging researchers at the Workshop on Field Robotics during ICRA 2025 in Atlanta, Georgia</p>
+            </div>
+            <div class="news-item">
+              <div class="news-date">
+                <i class="fas fa-calendar-alt"></i> May 2024
+              </div>
+              <h3>Represented SUNY Buffalo at AI expo in Albany, NY</h3>
+              <p>Honored to connect with leaders like SUNY Chancellor Dr. John B. King (former U.S. Secretary of Education) and state policymakers.</p>
+            </div>
+            <div class="news-item">
+              <div class="news-date">
+                <i class="fas fa-calendar-alt"></i> April 2024
+              </div>
+              <h3>Paper got accepted at ICRA 2024</h3>
+              <p>L-DYNO framework nominated for best paper in robotic perception category.</p>
+            </div>
+            <div class="news-item">
+              <div class="news-date">
+                <i class="fas fa-calendar-alt"></i> March 2024
+              </div>
+              <h3>New research collaboration with MIT</h3>
+              <p>Started collaboration on multi-agent robotic systems for disaster response scenarios.</p>
+            </div>
+            <div class="news-item">
+              <div class="news-date">
+                <i class="fas fa-calendar-alt"></i> February 2024
+              </div>
+              <h3>Keynote speaker at Robotics Symposium</h3>
+              <p>Presented our latest findings on terrain-adaptive locomotion at the Northeast Robotics Conference.</p>
+            </div>
+            <div class="news-item">
+              <div class="news-date">
+                <i class="fas fa-calendar-alt"></i> January 2024
+              </div>
+              <h3>Received NSF Grant for Legged Robotics Research</h3>
+              <p>Awarded $500,000 for developing next-generation navigation algorithms for legged robots.</p>
+            </div>
+            <div class="news-item">
+              <div class="news-date">
+                <i class="fas fa-calendar-alt"></i> December 2023
+              </div>
+              <h3>Successful field test in Adirondack Mountains</h3>
+              <p>Our quadruped robot prototype completed a 10km autonomous traversal in challenging mountain terrain.</p>
+            </div>
+          </div>
         </div>
-        <div class="news-item">
-          <div class="news-date">May 2024</div>
-          <h3>Represented SUNY Buffalo at AI expo in Albany, NY</h3>
-          <p> Honored to connect with leaders like SUNY Chancellor Dr. John B. King (former U.S. Secretary of Education) and state policymakers.</p>
-        </div>
-        <div class="news-item">
-          <div class="news-date">April 2024</div>
-          <h3>Paper got accepted at ICRA 2024</h3>
-          <p>L-DYNO framework nominated for best paper in robotic perception category.</p>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
     <!-- Education Section -->
     <section id="education" class="section">
@@ -671,7 +767,7 @@
       </div>
     </section>
 
-    <!-- Publications Section - UPDATED WITH GIF SUPPORT -->
+    <!-- Publications Section -->
     <section id="publications" class="section">
       <h2>Publications</h2>
       <div class="publications-grid">
@@ -746,7 +842,6 @@
               <a href="https://droneslab.github.io/IMPACT/" class="pub-link video-link">
                 <i class="fas fa-video"></i> Project
               </a>
-              
             </div>
           </div>
         </div>
@@ -766,11 +861,9 @@
               <a href="https://ieeexplore.ieee.org/abstract/document/10611097" class="pub-link paper-link">
                 <i class="fas fa-file-pdf"></i> Paper
               </a>
-              
               <a href="https://ieeexplore.ieee.org/abstract/document/10611097" class="pub-link code-link">
                 <i class="fas fa-code"></i> Code
               </a>
-              
             </div>
           </div>
         </div>
@@ -790,7 +883,6 @@
               <a href="https://ieeexplore.ieee.org/abstract/document/9551643" class="pub-link paper-link">
                 <i class="fas fa-file-pdf"></i> Paper
               </a>
-              
               <a href="https://github.com/kasiv008/OFFSEG" class="pub-link gif-link">
                 <i class="fas fa-expand"></i> Code
               </a>
