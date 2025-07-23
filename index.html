@@ -123,13 +123,13 @@
 
     /* NEW: Container for about and news */
     .about-news-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
       gap: 30px;
       margin: 2rem 0;
     }
 
     .about-section {
+      flex: 1;
       display: flex;
       flex-direction: column;
       gap: 20px;
@@ -139,27 +139,43 @@
       flex: 1;
     }
 
-    .profile-photo-container {
-      width: 100%;
-    }
-
     /* News Styles - UPDATED FOR SCROLLABLE PANEL */
     .news-panel {
-      height: 100%;
+      flex: 1;
       display: flex;
       flex-direction: column;
+      min-width: 320px;
+      max-height: 600px;
+      background: var(--light-bg);
+      border-radius: 8px;
+      border: 1px solid var(--raw-border);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      overflow: hidden;
     }
 
-    .news-panel h2 {
-      margin-top: 0;
-      padding-bottom: 15px;
-      border-bottom: 2px solid var(--secondary-color);
+    .news-header {
+      padding: 20px;
+      background: var(--primary-color);
+      color: white;
+      position: relative;
+    }
+
+    .news-header h2 {
+      margin: 0;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .news-header h2 i {
+      font-size: 1.2em;
     }
 
     .news-container {
       overflow-y: auto;
-      max-height: 500px;
-      padding-right: 10px;
+      padding: 20px;
+      height: 100%;
     }
 
     .news-grid {
@@ -170,7 +186,7 @@
 
     .news-item {
       padding: 1.5rem;
-      background: var(--light-bg);
+      background: white;
       border-radius: 8px;
       border: 1px solid var(--raw-border);
       transition: transform 0.3s ease;
@@ -195,6 +211,22 @@
     .news-date i {
       margin-right: 8px;
       font-size: 1rem;
+    }
+
+    .news-item::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .news-item:hover::after {
+      opacity: 1;
     }
 
     /* Scrollbar styling for news container */
@@ -507,7 +539,7 @@
       text-decoration: underline;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       .container {
         margin-top: 80px;
         padding: 15px;
@@ -538,8 +570,13 @@
 
       /* NEW: Adjust layout for mobile */
       .about-news-container {
-        grid-template-columns: 1fr;
+        flex-direction: column;
         gap: 20px;
+      }
+
+      .news-panel {
+        max-height: 450px;
+        min-width: auto;
       }
 
       .profile-photo-container {
@@ -568,10 +605,6 @@
       
       .pub-gif-container {
         height: 180px;
-      }
-      
-      .news-container {
-        max-height: 350px;
       }
     }
 
@@ -651,58 +684,62 @@
       </section>
 
       <!-- News Section as Scrollable Panel -->
-      <section id="news" class="section news-panel">
-        <h2>Latest News</h2>
-        <div class="news-container">
-          <div class="news-grid">
-            <div class="news-item">
-              <div class="news-date">
-                <i class="fas fa-calendar-alt"></i> May 2024
+      <section id="news">
+        <div class="news-panel">
+          <div class="news-header">
+            <h2><i class="fas fa-bullhorn"></i> Latest News</h2>
+          </div>
+          <div class="news-container">
+            <div class="news-grid">
+              <div class="news-item">
+                <div class="news-date">
+                  <i class="fas fa-calendar-alt"></i> May 2024
+                </div>
+                <h3>Our Paper Accepted at Workshop in Field Robotics at ICRA 2025</h3>
+                <p>Recognized as one of the top 10 emerging researchers at the Workshop on Field Robotics during ICRA 2025 in Atlanta, Georgia</p>
               </div>
-              <h3>Our Paper Accepted at Workshop in Field Robotics at ICRA 2025</h3>
-              <p>Recognized as one of the top 10 emerging researchers at the Workshop on Field Robotics during ICRA 2025 in Atlanta, Georgia</p>
-            </div>
-            <div class="news-item">
-              <div class="news-date">
-                <i class="fas fa-calendar-alt"></i> May 2024
+              <div class="news-item">
+                <div class="news-date">
+                  <i class="fas fa-calendar-alt"></i> May 2024
+                </div>
+                <h3>Represented SUNY Buffalo at AI expo in Albany, NY</h3>
+                <p>Honored to connect with leaders like SUNY Chancellor Dr. John B. King (former U.S. Secretary of Education) and state policymakers.</p>
               </div>
-              <h3>Represented SUNY Buffalo at AI expo in Albany, NY</h3>
-              <p>Honored to connect with leaders like SUNY Chancellor Dr. John B. King (former U.S. Secretary of Education) and state policymakers.</p>
-            </div>
-            <div class="news-item">
-              <div class="news-date">
-                <i class="fas fa-calendar-alt"></i> April 2024
+              <div class="news-item">
+                <div class="news-date">
+                  <i class="fas fa-calendar-alt"></i> April 2024
+                </div>
+                <h3>Paper got accepted at ICRA 2024</h3>
+                <p>L-DYNO framework nominated for best paper in robotic perception category.</p>
               </div>
-              <h3>Paper got accepted at ICRA 2024</h3>
-              <p>L-DYNO framework nominated for best paper in robotic perception category.</p>
-            </div>
-            <div class="news-item">
-              <div class="news-date">
-                <i class="fas fa-calendar-alt"></i> March 2024
+              <div class="news-item">
+                <div class="news-date">
+                  <i class="fas fa-calendar-alt"></i> March 2024
+                </div>
+                <h3>New research collaboration with MIT</h3>
+                <p>Started collaboration on multi-agent robotic systems for disaster response scenarios.</p>
               </div>
-              <h3>New research collaboration with MIT</h3>
-              <p>Started collaboration on multi-agent robotic systems for disaster response scenarios.</p>
-            </div>
-            <div class="news-item">
-              <div class="news-date">
-                <i class="fas fa-calendar-alt"></i> February 2024
+              <div class="news-item">
+                <div class="news-date">
+                  <i class="fas fa-calendar-alt"></i> February 2024
+                </div>
+                <h3>Keynote speaker at Robotics Symposium</h3>
+                <p>Presented our latest findings on terrain-adaptive locomotion at the Northeast Robotics Conference.</p>
               </div>
-              <h3>Keynote speaker at Robotics Symposium</h3>
-              <p>Presented our latest findings on terrain-adaptive locomotion at the Northeast Robotics Conference.</p>
-            </div>
-            <div class="news-item">
-              <div class="news-date">
-                <i class="fas fa-calendar-alt"></i> January 2024
+              <div class="news-item">
+                <div class="news-date">
+                  <i class="fas fa-calendar-alt"></i> January 2024
+                </div>
+                <h3>Received NSF Grant for Legged Robotics Research</h3>
+                <p>Awarded $500,000 for developing next-generation navigation algorithms for legged robots.</p>
               </div>
-              <h3>Received NSF Grant for Legged Robotics Research</h3>
-              <p>Awarded $500,000 for developing next-generation navigation algorithms for legged robots.</p>
-            </div>
-            <div class="news-item">
-              <div class="news-date">
-                <i class="fas fa-calendar-alt"></i> December 2023
+              <div class="news-item">
+                <div class="news-date">
+                  <i class="fas fa-calendar-alt"></i> December 2023
+                </div>
+                <h3>Successful field test in Adirondack Mountains</h3>
+                <p>Our quadruped robot prototype completed a 10km autonomous traversal in challenging mountain terrain.</p>
               </div>
-              <h3>Successful field test in Adirondack Mountains</h3>
-              <p>Our quadruped robot prototype completed a 10km autonomous traversal in challenging mountain terrain.</p>
             </div>
           </div>
         </div>
