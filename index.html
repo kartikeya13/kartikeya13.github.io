@@ -1,10 +1,17 @@
-<!DOCTYPE html>
+about me section is very big
+
+
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kartikeya Singh | PhD Candidate</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Kartikeya Singh [PhD@UB]</title>
+  <meta name="author" content="Kartikeya Singh">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Open+Sans:wght@400;600&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg">
+
   <style>
     :root {
       --primary-color: #2A2F4F;
@@ -16,17 +23,25 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Open Sans', sans-serif;
       background: #f5f7fa;
       color: var(--text-color);
-      line-height: 1.6;
+      line-height: 1.7;
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      margin: 0.5em 0;
+      color: var(--primary-color);
     }
 
     .container {
       max-width: 1200px;
-      margin: 80px auto 40px;
+      margin: 100px auto 40px;
       padding: 25px;
       background: white;
       border-radius: 8px;
@@ -98,8 +113,6 @@
       height: auto;
       border-radius: 8px;
       border: 1px solid var(--raw-border);
-      max-height: 280px;
-      object-fit: cover;
     }
 
     .section {
@@ -111,87 +124,25 @@
       border: 1px solid var(--raw-border);
     }
 
-    /* OPTIMIZED ABOUT SECTION */
-    .about-container {
+    /* NEW: Container for about and news */
+    .about-news-container {
       display: flex;
       gap: 30px;
       margin: 2rem 0;
     }
 
-    .profile-photo-container {
-      flex: 0 0 35%;
-      max-width: 35%;
-    }
-
-    .about-content {
+    .about-section {
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 20px;
     }
 
-    .about-brief {
-      font-size: 1.1rem;
-      line-height: 1.7;
-    }
-    
-    .research-focus {
-      background: rgba(78, 79, 235, 0.08);
-      border-left: 4px solid var(--secondary-color);
-      padding: 15px;
-      border-radius: 0 6px 6px 0;
-      margin: 10px 0;
-    }
-    
-    .research-focus h4 {
-      margin-top: 0;
-      color: var(--secondary-color);
-    }
-    
-    .focus-items {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-    }
-    
-    .focus-item {
-      background: rgba(78, 79, 235, 0.15);
-      color: var(--secondary-color);
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-    
-    .more-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-    }
-    
-    .more-content.expanded {
-      max-height: 1000px;
-    }
-    
-    .toggle-more {
-      background: none;
-      border: none;
-      color: var(--secondary-color);
-      cursor: pointer;
-      font-weight: 600;
-      padding: 5px 0;
-      margin-top: 10px;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-    
-    .toggle-more:hover {
-      text-decoration: underline;
+    .about-text {
+      flex: 1;
     }
 
-    /* News Styles */
+    /* News Styles - UPDATED FOR SCROLLABLE PANEL */
     .news-panel {
       flex: 1;
       display: flex;
@@ -265,7 +216,41 @@
       font-size: 1rem;
     }
 
-    /* Other sections remain the same as before */
+    .news-item::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .news-item:hover::after {
+      opacity: 1;
+    }
+
+    /* Scrollbar styling for news container */
+    .news-container::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .news-container::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    .news-container::-webkit-scrollbar-thumb {
+      background: var(--secondary-color);
+      border-radius: 10px;
+    }
+
+    .news-container::-webkit-scrollbar-thumb:hover {
+      background: #3a3ac7;
+    }
+
     /* Education Styles */
     .education-grid {
       display: grid;
@@ -299,6 +284,48 @@
       margin-bottom: 0.75rem;
       font-size: 0.9em;
       color: #666;
+    }
+
+    .education-gpa {
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      background: white;
+      border-radius: 6px;
+      display: inline-block;
+      font-weight: 500;
+      border: 1px solid var(--raw-border);
+    }
+
+    .education-lab {
+      margin: 1rem 0;
+      padding-left: 1rem;
+      border-left: 3px solid var(--secondary-color);
+    }
+
+    .education-advisor {
+      display: block;
+      margin-top: 0.5rem;
+      font-style: italic;
+      color: #666;
+    }
+
+    .education-highlights {
+      margin: 1rem 0 0;
+      padding-left: 1.25rem;
+      list-style-type: none;
+    }
+
+    .education-highlights li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .education-highlights li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--accent-color);
     }
 
     /* Publications Styles */
@@ -339,10 +366,185 @@
       justify-content: center;
     }
 
-    /* Responsive adjustments */
+    .pub-gif {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 4px;
+      transition: transform 0.3s ease;
+    }
+
+    .pub-item:hover .pub-gif {
+      transform: scale(1.03);
+    }
+
+    .pub-details {
+      flex: 1;
+    }
+
+    .pub-title {
+      font-size: 1.1rem;
+      margin: 0 0 0.5rem;
+    }
+
+    .pub-authors {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .pub-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      color: var(--secondary-color);
+    }
+
+    .pub-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .pub-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+      padding: 0.5rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      border: 1px solid;
+      text-align: center;
+    }
+
+    .pub-link:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .paper-link { 
+      background: rgba(42, 47, 79, 0.1); 
+      color: var(--primary-color);
+      border-color: rgba(42, 47, 79, 0.2);
+    }
+    .video-link { 
+      background: rgba(255, 107, 107, 0.1); 
+      color: var(--accent-color);
+      border-color: rgba(255, 107, 107, 0.2);
+    }
+    .cite-link { 
+      background: rgba(248, 249, 250, 0.8); 
+      color: var(--text-color);
+      border-color: var(--raw-border);
+    }
+    .code-link { 
+      background: rgba(78, 79, 235, 0.1); 
+      color: var(--secondary-color);
+      border-color: rgba(78, 79, 235, 0.2);
+    }
+    .gif-link { 
+      background: rgba(76, 175, 80, 0.1); 
+      color: #4CAF50;
+      border-color: rgba(76, 175, 80, 0.2);
+    }
+
+    /* Experience Styles */
+    .experience-grid {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .experience-item {
+      padding: 1.5rem;
+      background: var(--light-bg);
+      border-radius: 8px;
+      border: 1px solid var(--raw-border);
+    }
+
+    .experience-title {
+      font-size: 1.1rem;
+      margin: 0 0 0.5rem;
+    }
+
+    .experience-meta {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    .experience-highlights {
+      margin: 1rem 0 0;
+      padding-left: 1.25rem;
+      list-style-type: none;
+    }
+
+    .experience-highlights li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .experience-highlights li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--accent-color);
+    }
+
+    /* Contact Styles */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .contact-item {
+      padding: 1.5rem;
+      background: var(--light-bg);
+      border-radius: 8px;
+      border: 1px solid var(--raw-border);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .contact-icon {
+      font-size: 1.5rem;
+      color: var(--secondary-color);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(78, 79, 235, 0.1);
+    }
+
+    .contact-details a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-details a:hover {
+      color: var(--primary-color);
+      text-decoration: underline;
+    }
+
     @media (max-width: 900px) {
       .container {
-        margin-top: 70px;
+        margin-top: 80px;
         padding: 15px;
       }
 
@@ -365,22 +567,24 @@
         display: flex;
       }
 
-      .about-container {
+      .header-brand {
+        font-size: 1.1rem;
+      }
+
+      /* NEW: Adjust layout for mobile */
+      .about-news-container {
         flex-direction: column;
-      }
-      
-      .profile-photo-container {
-        max-width: 100%;
-        flex: none;
-      }
-      
-      .profile-photo {
-        max-height: 350px;
+        gap: 20px;
       }
 
       .news-panel {
         max-height: 450px;
         min-width: auto;
+      }
+
+      .profile-photo-container {
+        max-width: 100px;
+        margin: 0 auto;
       }
 
       .section {
@@ -417,7 +621,7 @@
       }
 
       .container {
-        margin-top: 60px;
+        margin-top: 70px;
       }
 
       h2 {
@@ -428,12 +632,13 @@
         height: 160px;
       }
       
-      .publications-grid {
-        grid-template-columns: 1fr;
+      .pub-links {
+        grid-template-columns: 1fr 1fr;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="header">
     <div class="header-content">
@@ -456,92 +661,93 @@
   </div>
 
   <div class="container">
-    <!-- Optimized About Section -->
-    <section id="about" class="section">
-      <h2>About Me</h2>
-      <div class="about-container">
-        <div class="profile-photo-container">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Kartikeya Singh" class="profile-photo">
-        </div>
-        
-        <div class="about-content">
-          <div class="about-brief">
+    <!-- About Section and News Panel Side by Side -->
+    <div class="about-news-container">
+      <!-- About Section -->
+      <section id="about" class="section">
+        <h2>About Me</h2>
+        <div class="about-section">
+          <div class="profile-photo-container">
+            <img src="f.png" alt="Kartikeya Singh" class="profile-photo">
+          </div>
+          <div class="about-text">
             <p>
-              I am a Ph.D. candidate at the University at Buffalo specializing in autonomous systems, SLAM, and risk-aware navigation for robots in complex terrains. My research develops algorithms for robust perception and navigation in challenging environments.
+              I am a researcher specializing in autonomous systems, SLAM, and risk-aware navigation for robots in complex terrains. 
+              My work spans developing algorithms for robust perception and navigation. Currently, I am a Ph.D. student at the 
+              University at Buffalo, working in the Distributed Robotics and Networked Embedded Sensing (DRONES) Lab under 
+              Prof. Karthik Dantu.
             </p>
-            
-            <div class="research-focus">
-              <h4>Research Focus</h4>
-              <p>Enabling legged robots to navigate unstructured environments through:</p>
-              <div class="focus-items">
-                <span class="focus-item">Terrain-adaptive locomotion</span>
-                <span class="focus-item">Visual perception</span>
-                <span class="focus-item">Dynamic motion planning</span>
-                <span class="focus-item">Risk-aware navigation</span>
-              </div>
-            </div>
-            
             <p>
-              I work in the Distributed Robotics and Networked Embedded Sensing (DRONES) Lab under Prof. Karthik Dantu, creating robotic systems that operate autonomously in real-world scenarios.
+              My research focuses on enabling legged robots to navigate challenging environments through innovative approaches 
+              in visual perception and dynamic motion planning. I'm passionate about creating robotic systems that can operate 
+              autonomously in real-world scenarios.
             </p>
           </div>
-          
-          <div class="more-content" id="moreContent">
-            <p>
-              My approach combines theoretical foundations with practical implementations, focusing on developing algorithms that enable robots to perceive, reason, and act in dynamic environments. I'm particularly interested in bridging the gap between simulation and real-world deployment.
-            </p>
-            <p>
-              Prior to my Ph.D., I developed machine learning solutions for embedded systems and worked on autonomous navigation for agricultural robots. I'm passionate about creating technologies that push the boundaries of what autonomous systems can achieve.
-            </p>
-          </div>
-          
-          <button class="toggle-more" id="toggleMore">
-            <i class="fas fa-chevron-down"></i> Learn more about my research
-          </button>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- News Section -->
-    <section id="news">
-      <div class="news-panel">
-        <div class="news-header">
-          <h2><i class="fas fa-bullhorn"></i> Latest News</h2>
-        </div>
-        <div class="news-container">
-          <div class="news-grid">
-            <div class="news-item">
-              <div class="news-date">
-                <i class="fas fa-calendar-alt"></i> May 2024
+      <!-- News Section as Scrollable Panel -->
+      <section id="news">
+        <div class="news-panel">
+          <div class="news-header">
+            <h2><i class="fas fa-bullhorn"></i> Latest News</h2>
+          </div>
+          <div class="news-container">
+            <div class="news-grid">
+              <div class="news-item">
+                <div class="news-date">
+                  <i class="fas fa-calendar-alt"></i> May 2024
+                </div>
+                <h3>Our Paper Accepted at Workshop in Field Robotics at ICRA 2025</h3>
+                <p>Recognized as one of the top 10 emerging researchers at the Workshop on Field Robotics during ICRA 2025 in Atlanta, Georgia</p>
               </div>
-              <h3>Our Paper Accepted at Workshop in Field Robotics at ICRA 2025</h3>
-              <p>Recognized as one of the top 10 emerging researchers at the Workshop on Field Robotics during ICRA 2025 in Atlanta, Georgia</p>
-            </div>
-            <div class="news-item">
-              <div class="news-date">
-                <i class="fas fa-calendar-alt"></i> May 2024
+              <div class="news-item">
+                <div class="news-date">
+                  <i class="fas fa-calendar-alt"></i> May 2024
+                </div>
+                <h3>Represented SUNY Buffalo at AI expo in Albany, NY</h3>
+                <p>Honored to connect with leaders like SUNY Chancellor Dr. John B. King (former U.S. Secretary of Education) and state policymakers.</p>
               </div>
-              <h3>Represented SUNY Buffalo at AI expo in Albany, NY</h3>
-              <p>Honored to connect with leaders like SUNY Chancellor Dr. John B. King (former U.S. Secretary of Education) and state policymakers.</p>
-            </div>
-            <div class="news-item">
-              <div class="news-date">
-                <i class="fas fa-calendar-alt"></i> April 2024
+              <div class="news-item">
+                <div class="news-date">
+                  <i class="fas fa-calendar-alt"></i> April 2024
+                </div>
+                <h3>Paper got accepted at ICRA 2024</h3>
+                <p>L-DYNO framework nominated for best paper in robotic perception category.</p>
               </div>
-              <h3>Paper got accepted at ICRA 2024</h3>
-              <p>L-DYNO framework nominated for best paper in robotic perception category.</p>
-            </div>
-            <div class="news-item">
-              <div class="news-date">
-                <i class="fas fa-calendar-alt"></i> March 2024
+              <div class="news-item">
+                <div class="news-date">
+                  <i class="fas fa-calendar-alt"></i> March 2024
+                </div>
+                <h3>New research collaboration with MIT</h3>
+                <p>Started collaboration on multi-agent robotic systems for disaster response scenarios.</p>
               </div>
-              <h3>New research collaboration with MIT</h3>
-              <p>Started collaboration on multi-agent robotic systems for disaster response scenarios.</p>
+              <div class="news-item">
+                <div class="news-date">
+                  <i class="fas fa-calendar-alt"></i> February 2024
+                </div>
+                <h3>Keynote speaker at Robotics Symposium</h3>
+                <p>Presented our latest findings on terrain-adaptive locomotion at the Northeast Robotics Conference.</p>
+              </div>
+              <div class="news-item">
+                <div class="news-date">
+                  <i class="fas fa-calendar-alt"></i> January 2024
+                </div>
+                <h3>Received NSF Grant for Legged Robotics Research</h3>
+                <p>Awarded $500,000 for developing next-generation navigation algorithms for legged robots.</p>
+              </div>
+              <div class="news-item">
+                <div class="news-date">
+                  <i class="fas fa-calendar-alt"></i> December 2023
+                </div>
+                <h3>Successful field test in Adirondack Mountains</h3>
+                <p>Our quadruped robot prototype completed a 10km autonomous traversal in challenging mountain terrain.</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
     <!-- Education Section -->
     <section id="education" class="section">
@@ -607,7 +813,7 @@
       <div class="publications-grid">
         <div class="pub-item">
           <div class="pub-gif-container">
-            <img src="https://via.placeholder.com/400x200?text=CART+Demo" alt="CART Demo" class="pub-gif">
+            <img src="IMG_1611-ezgif.com-video-to-gif-converter.gif" alt="CART Demo" class="pub-gif">
           </div>
           <div class="pub-details">
             <h3 class="pub-title">CART: Context-Aware Terrain Adaptation for Stable Locomotion</h3>
@@ -623,13 +829,19 @@
               <a href="#" class="pub-link video-link">
                 <i class="fas fa-video"></i> Video
               </a>
+              <a href="#" class="pub-link code-link">
+                <i class="fas fa-code"></i> Code
+              </a>
+              <a href="#" class="pub-link gif-link">
+                <i class="fas fa-expand"></i> GIF
+              </a>
             </div>
           </div>
         </div>
 
         <div class="pub-item">
           <div class="pub-gif-container">
-            <img src="https://via.placeholder.com/400x200?text=Culvert+Inspection" alt="Culvert Inspection" class="pub-gif">
+            <img src="inspector.gif" alt="Culvert Inspection" class="pub-gif">
           </div>
           <div class="pub-details">
             <h3 class="pub-title">Autonomous Culvert Inspection on the Erie Canal using Legged Robots</h3>
@@ -639,14 +851,128 @@
               <span class="pub-date">May 2025</span>
             </div>
             <div class="pub-links">
-              <a href="#" class="pub-link paper-link">
+              <a href="https://droneslab.github.io/INSPECTOR/static/docs/Canals_IMPACT_WFR-3_compressed.pdf" class="pub-link paper-link">
                 <i class="fas fa-file-pdf"></i> Paper
               </a>
-              <a href="#" class="pub-link video-link">
+              <a href="https://droneslab.github.io/INSPECTOR/" class="pub-link video-link">
+                <i class="fas fa-video"></i> Project
+              </a>
+              <a href="https://www.youtube.com/watch?v=qXXrJpCrDek" class="pub-link gif-link">
+                <i class="fas fa-expand"></i> Video
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-gif-container">
+            <img src="panos.gif" alt="Culvert Inspection" class="pub-gif">
+          </div>
+          <div class="pub-details">
+            <h3 class="pub-title">PANOS: Payload-Aware Navigation in Offroad Scenarios</h3>
+            <div class="pub-authors">K Singh, Y Turkar, C Alukal, K Dantu</div>
+            <div class="pub-meta">
+              <span class="pub-conference">ICRA 2025 (WFR)</span>
+              <span class="pub-date">May 2025</span>
+            </div>
+            <div class="pub-links">
+              <a href="https://arxiv.org/abs/2409.16566" class="pub-link paper-link">
+                <i class="fas fa-file-pdf"></i> Paper
+              </a>
+              <a href="https://droneslab.github.io/IMPACT/" class="pub-link video-link">
                 <i class="fas fa-video"></i> Project
               </a>
             </div>
           </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-gif-container">
+            <img src="ldyno.gif" alt="L-DYNO Demo" class="pub-gif">
+          </div>
+          <div class="pub-details">
+            <h3 class="pub-title">L-DYNO: Framework to Learn Consistent Visual Features Using Robot's Motion</h3>
+            <div class="pub-authors">K Singh, C Adhivarahan, K Dantu</div>
+            <div class="pub-meta">
+              <span class="pub-conference">ICRA 2025</span>
+              <span class="pub-date">April 2025</span>
+            </div>
+            <div class="pub-links">
+              <a href="https://ieeexplore.ieee.org/abstract/document/10611097" class="pub-link paper-link">
+                <i class="fas fa-file-pdf"></i> Paper
+              </a>
+              <a href="https://ieeexplore.ieee.org/abstract/document/10611097" class="pub-link code-link">
+                <i class="fas fa-code"></i> Code
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-gif-container">
+            <img src="offseg.gif" alt="OFFSEG Demo" class="pub-gif">
+          </div>
+          <div class="pub-details">
+            <h3 class="pub-title">OFFSEG: A Semantic Segmentation Framework for Off-Road Driving</h3>
+            <div class="pub-authors">K Viswanath*, K Singh*, P Jiang, PB Sujit, S Saripalli</div>
+            <div class="pub-meta">
+              <span class="pub-conference">CASE 2021</span>
+              <span class="pub-date">August 2021</span>
+            </div>
+            <div class="pub-links">
+              <a href="https://ieeexplore.ieee.org/abstract/document/9551643" class="pub-link paper-link">
+                <i class="fas fa-file-pdf"></i> Paper
+              </a>
+              <a href="https://github.com/kasiv008/OFFSEG" class="pub-link gif-link">
+                <i class="fas fa-expand"></i> Code
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+      <h2>Research and Teaching Experience</h2>
+      <div class="experience-grid">
+        <div class="experience-item">
+          <h3 class="experience-title">Research Assistant</h3>
+          <div class="experience-meta">
+            <span><i class="fas fa-map-marker-alt"></i> University at Buffalo</span>
+            <span><i class="fas fa-calendar-alt"></i> 2023–Present</span>
+          </div>
+          <ul class="experience-highlights">
+            <li>Developed PANOS for legged robot navigation in unstructured environments</li>
+            <li>Created L-DYNO framework for visual feature learning using robot motion</li>
+            <li>Implemented terrain adaptation algorithms for quadruped robots</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <h3 class="experience-title">Teaching Assistant</h3>
+          <div class="experience-meta">
+            <span><i class="fas fa-map-marker-alt"></i> University at Buffalo</span>
+            <span><i class="fas fa-calendar-alt"></i> 2022–2022</span>
+          </div>
+          <ul class="experience-highlights">
+            <li>Robotic Algorithms (CSE 568/468)</li>
+            <li>Data Intensive Computing (CSE 587)</li>
+            <li>Developed course materials and supervised student projects</li>
+          </ul>
+        </div>
+
+        <div class="experience-item">
+          <h3 class="experience-title">Research Associate</h3>
+          <div class="experience-meta">
+            <span><i class="fas fa-map-marker-alt"></i> IISER Bhopal</span>
+            <span><i class="fas fa-calendar-alt"></i> 2020–2022</span>
+          </div>
+          <ul class="experience-highlights">
+            <li>Developed OFFSEG framework for off-road semantic segmentation</li>
+            <li>Implemented multi-modal sensor fusion techniques</li>
+            <li>Contributed to autonomous navigation systems for agricultural robots</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -672,6 +998,26 @@
           <div class="contact-details">
             <h4>Google Scholar</h4>
             <a href="https://scholar.google.com/citations?user=ZYrJj3AAAAAJ">scholar.google.com</a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <div class="contact-details">
+            <h4>Office</h4>
+            <div>Davis Hall 312, University at Buffalo</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fab fa-linkedin-in"></i>
+          </div>
+          <div class="contact-details">
+            <h4>LinkedIn</h4>
+            <a href="#">linkedin.com/in/kartikeya</a>
           </div>
         </div>
       </div>
@@ -709,19 +1055,17 @@
         });
       });
       
-      // Expandable about content
-      const toggleMore = document.getElementById('toggleMore');
-      const moreContent = document.getElementById('moreContent');
-      
-      toggleMore.addEventListener('click', () => {
-        moreContent.classList.toggle('expanded');
-        const icon = toggleMore.querySelector('i');
-        
-        if (moreContent.classList.contains('expanded')) {
-          toggleMore.innerHTML = '<i class="fas fa-chevron-up"></i> Show less';
-        } else {
-          toggleMore.innerHTML = '<i class="fas fa-chevron-down"></i> Learn more about my research';
-        }
+      // GIF expand functionality
+      document.querySelectorAll('.pub-gif').forEach(gif => {
+        gif.addEventListener('click', function() {
+          if (this.classList.contains('expanded')) {
+            this.classList.remove('expanded');
+            this.closest('.pub-gif-container').classList.remove('expanded');
+          } else {
+            this.classList.add('expanded');
+            this.closest('.pub-gif-container').classList.add('expanded');
+          }
+        });
       });
     });
   </script>
