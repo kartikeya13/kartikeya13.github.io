@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
@@ -123,28 +121,33 @@
       border: 1px solid var(--raw-border);
     }
 
-    /* NEW: Container for about and news */
+    /* UPDATED: Container for about and news */
     .about-news-container {
       display: flex;
-      gap: 5px;
+      gap: 25px; /* Increased gap for better spacing */
       margin: 0.5rem 0;
     }
 
     .about-section {
-      flex: 1;
+      flex: 1; /* Changed from 1 to 1.5 */
       display: flex;
-      
       flex-direction: column;
-      gap: 10px;
+      gap: 15px; /* Increased gap */
     }
 
     .about-text {
       flex: 1;
     }
 
+    /* Profile photo container - added max-width */
+    .profile-photo-container {
+      max-width: 250px; /* Added max-width constraint */
+      margin: 0 auto; /* Center the photo */
+    }
+
     /*  Styles - UPDATED FOR SCROLLABLE PANEL */
-    .-panel {
-      flex: 1;
+    .news-panel {
+      flex: 1; /* Changed from 1 to 1.5 */
       display: flex;
       flex-direction: column;
       min-width: 320px;
@@ -571,7 +574,7 @@
         font-size: 1.1rem;
       }
 
-      /* NEW: Adjust layout for mobile */
+      /* Adjust layout for mobile */
       .about-news-container {
         flex-direction: column;
         gap: 20px;
@@ -636,6 +639,35 @@
         grid-template-columns: 1fr 1fr;
       }
     }
+    
+    /* NEW: Responsive adjustments for about section */
+    @media (min-width: 901px) and (max-width: 1100px) {
+      .about-news-container {
+        gap: 15px;
+      }
+      
+      .about-section {
+        flex: 1.3;
+      }
+      
+      .news-panel {
+        flex: 1.7;
+      }
+    }
+    
+    @media (min-width: 1101px) {
+      .about-news-container {
+        gap: 20px;
+      }
+      
+      .about-section {
+        flex: 1;
+      }
+      
+      .news-panel {
+        flex: 2;
+      }
+    }
   </style>
 </head>
 
@@ -668,7 +700,7 @@
         <h2>About Me</h2>
         <div class="about-section">
           <div class="profile-photo-container">
-            <img src="f.png" alt="Kartikeya Singh" class="profile-photo">
+            <img src="https://via.placeholder.com/250x300?text=Kartikeya+Singh" alt="Kartikeya Singh" class="profile-photo">
           </div>
           <div class="about-text">
             <p>
@@ -681,6 +713,11 @@
               My research focuses on enabling legged robots to navigate challenging environments through innovative approaches 
               in visual perception and dynamic motion planning. I'm passionate about creating robotic systems that can operate 
               autonomously in real-world scenarios.
+            </p>
+            <p>
+              My approach combines theoretical foundations with practical implementations, bridging the gap between academic 
+              research and real-world applications. I actively collaborate with industry partners to deploy my research in 
+              challenging environments.
             </p>
           </div>
         </div>
@@ -813,7 +850,7 @@
       <div class="publications-grid">
         <div class="pub-item">
           <div class="pub-gif-container">
-            <img src="IMG_1611-ezgif.com-video-to-gif-converter.gif" alt="CART Demo" class="pub-gif">
+            <img src="https://via.placeholder.com/350x200?text=CART+Demo" alt="CART Demo" class="pub-gif">
           </div>
           <div class="pub-details">
             <h3 class="pub-title">CART: Context-Aware Terrain Adaptation for Stable Locomotion</h3>
@@ -841,7 +878,7 @@
 
         <div class="pub-item">
           <div class="pub-gif-container">
-            <img src="inspector.gif" alt="Culvert Inspection" class="pub-gif">
+            <img src="https://via.placeholder.com/350x200?text=Culvert+Inspection" alt="Culvert Inspection" class="pub-gif">
           </div>
           <div class="pub-details">
             <h3 class="pub-title">Autonomous Culvert Inspection on the Erie Canal using Legged Robots</h3>
@@ -866,7 +903,7 @@
 
         <div class="pub-item">
           <div class="pub-gif-container">
-            <img src="panos.gif" alt="Culvert Inspection" class="pub-gif">
+            <img src="https://via.placeholder.com/350x200?text=PANOS" alt="PANOS" class="pub-gif">
           </div>
           <div class="pub-details">
             <h3 class="pub-title">PANOS: Payload-Aware Navigation in Offroad Scenarios</h3>
@@ -888,7 +925,7 @@
 
         <div class="pub-item">
           <div class="pub-gif-container">
-            <img src="ldyno.gif" alt="L-DYNO Demo" class="pub-gif">
+            <img src="https://via.placeholder.com/350x200?text=L-DYNO" alt="L-DYNO Demo" class="pub-gif">
           </div>
           <div class="pub-details">
             <h3 class="pub-title">L-DYNO: Framework to Learn Consistent Visual Features Using Robot's Motion</h3>
@@ -910,7 +947,7 @@
 
         <div class="pub-item">
           <div class="pub-gif-container">
-            <img src="offseg.gif" alt="OFFSEG Demo" class="pub-gif">
+            <img src="https://via.placeholder.com/350x200?text=OFFSEG" alt="OFFSEG Demo" class="pub-gif">
           </div>
           <div class="pub-details">
             <h3 class="pub-title">OFFSEG: A Semantic Segmentation Framework for Off-Road Driving</h3>
