@@ -4,370 +4,197 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kartikeya Singh</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap">
 
   <style>
-    :root {
-      --ink:       #1a1208;
-      --ink-mid:   #3d3020;
-      --ink-muted: #6a5840;
-      --ink-faint: #a89070;
-      --rule:      #c0aa88;
-      --paper:     #f2e8d0;
-      --accent:    #5a2008;
-      --serif: 'EB Garamond', Georgia, serif;
-      --mono:  'DM Mono', monospace;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
+    html {
+      background: #e8e8e8;
+    }
+
     body {
-      font-family: var(--serif);
+      font-family: 'EB Garamond', Georgia, serif;
       font-size: 17px;
       line-height: 1.8;
-      color: var(--ink);
-      background: #282018;
-      min-height: 100vh;
-    }
-
-    /* ── the page ── */
-    #page {
-      max-width: 860px;
+      color: #111;
+      background: #fafafa;
+      max-width: 820px;
       margin: 0 auto;
-      padding: 3rem 3.5rem 5rem;
-      min-height: 100vh;
-      background-color: var(--paper);
-      background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0.4'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.065'/%3E%3C/svg%3E"),
-        repeating-linear-gradient(180deg, transparent, transparent 23px, rgba(140,105,45,0.048) 23px, rgba(140,105,45,0.048) 24px);
-      box-shadow:
-        0 0 0 1px rgba(100,70,20,0.2),
-        0 4px 20px rgba(0,0,0,0.3),
-        0 16px 60px rgba(0,0,0,0.35),
-        inset 0 0 100px rgba(90,60,15,0.06);
-      position: relative;
+      padding: 2.5rem 2rem 5rem;
+      box-shadow: 0 0 0 1px #ddd, 0 4px 24px rgba(0,0,0,0.07);
     }
 
-    /* worn corner tints */
-    #page::before {
-      content: '';
-      position: absolute; inset: 0; pointer-events: none;
-      background:
-        radial-gradient(ellipse at   0%   0%, rgba(80,50,10,0.13) 0%, transparent 25%),
-        radial-gradient(ellipse at 100%   0%, rgba(70,45,8,0.10)  0%, transparent 20%),
-        radial-gradient(ellipse at   0% 100%, rgba(70,45,8,0.10)  0%, transparent 22%),
-        radial-gradient(ellipse at 100% 100%, rgba(80,50,10,0.13) 0%, transparent 26%);
-    }
+    a { color: #1a0dab; text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-    #page > * { position: relative; z-index: 1; }
+    hr { border: none; border-top: 1px solid #ccc; margin: 1.6rem 0; }
 
-    /* ── links ── */
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; text-underline-offset: 3px; }
-
-    /* ── horizontal rule ── */
-    hr {
-      border: none;
-      border-top: 1px solid var(--rule);
-      margin: 1.8rem 0;
-    }
-
-    /* ── nav strip ── */
+    /* nav */
     #topnav {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.04em;
-      margin-bottom: 0.6rem;
+      font-size: 0.88rem;
       display: flex;
-      justify-content: flex-end;
-      gap: 1.2rem;
+      flex-wrap: wrap;
+      gap: 0.2rem 0;
+      margin-bottom: 0.5rem;
+      color: #444;
     }
-    #topnav a { color: var(--ink-muted); }
-    #topnav a:hover { color: var(--accent); text-decoration: none; }
+    #topnav a { color: #1a0dab; margin-right: 0.1rem; }
 
-    /* ── header: photo + info ── */
+    /* header */
     #header {
       display: grid;
-      grid-template-columns: 170px 1fr;
-      gap: 2.2rem;
+      grid-template-columns: 160px 1fr;
+      gap: 2rem;
       align-items: start;
-      margin-bottom: 0.5rem;
     }
 
     #header img {
       width: 100%;
-      border-radius: 2px;
-      filter: sepia(20%) contrast(0.93);
-      border: 1px solid var(--rule);
-      box-shadow: 2px 3px 10px rgba(0,0,0,0.13);
+      border: 1px solid #ddd;
     }
 
-    #header-info h1 {
-      font-family: var(--serif);
-      font-size: 2rem;
+    #header h1 {
+      font-size: 1.9rem;
       font-weight: 400;
-      line-height: 1.15;
       margin-bottom: 0.1rem;
-      color: var(--ink);
     }
 
-    .header-role {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.05em;
-      color: var(--ink-muted);
-      margin-bottom: 1rem;
+    .role {
+      font-size: 0.85rem;
+      color: #555;
+      margin-bottom: 0.9rem;
+      font-family: Georgia, serif;
     }
 
-    .header-affil {
-      font-size: 0.95rem;
-      margin-bottom: 0.25rem;
-      line-height: 1.5;
+    .affil { font-size: 0.95rem; margin-bottom: 0.2rem; line-height: 1.5; }
+
+    .email {
+      font-size: 0.85rem;
+      color: #444;
+      margin: 0.7rem 0 0.5rem;
     }
 
-    .header-affil strong { color: var(--ink-mid); }
+    .hlinks { font-size: 0.88rem; }
+    .hlinks a { margin-right: 0.5rem; }
 
-    .header-email {
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      color: var(--ink-muted);
-      margin: 0.8rem 0 0.6rem;
-    }
+    /* welcome */
+    #welcome { font-size: 0.95rem; color: #444; font-style: italic; margin: 0.3rem 0 0.2rem; }
 
-    .header-links {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.03em;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.3rem 0;
-    }
+    #secnav { font-size: 0.88rem; margin-top: 0.5rem; }
+    #secnav a { margin-right: 0.2rem; }
 
-    .header-links a {
-      color: var(--ink-mid);
-      margin-right: 0.15rem;
-    }
+    /* section headings */
+    h2 { font-size: 1.4rem; font-weight: 400; margin: 2rem 0 0.8rem; }
+    h3 { font-size: 1rem; font-weight: 600; margin: 1.4rem 0 0.4rem; }
 
-    .header-links span { color: var(--ink-faint); }
-
-    /* ── welcome blurb ── */
-    #welcome {
-      font-size: 0.97rem;
-      color: var(--ink-mid);
-      margin: 0.4rem 0 0.2rem;
-      font-style: italic;
-    }
-
-    /* ── section nav ── */
-    #secnav {
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.04em;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.2rem;
-    }
-    #secnav a { color: var(--ink-muted); }
-    #secnav a:hover { color: var(--accent); text-decoration: none; }
-    #secnav span { color: var(--rule); }
-
-    /* ── section headings ── */
-    h2 {
-      font-family: var(--serif);
-      font-size: 1.45rem;
-      font-weight: 400;
-      color: var(--ink);
-      margin: 2.2rem 0 0.9rem;
-    }
-
-    h3 {
-      font-family: var(--serif);
-      font-size: 1.05rem;
-      font-weight: 500;
-      color: var(--ink-mid);
-      margin: 1.6rem 0 0.5rem;
-    }
-
-    p { margin-bottom: 0.8rem; }
+    p { margin-bottom: 0.7rem; }
     p:last-child { margin-bottom: 0; }
 
-    /* ── news ── */
+    /* news */
     .news-row {
       display: grid;
-      grid-template-columns: 82px 1fr;
-      gap: 0.8rem;
-      padding: 0.55rem 0;
-      border-bottom: 1px solid rgba(192,170,136,0.5);
+      grid-template-columns: 80px 1fr;
+      gap: 0.7rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #eee;
       font-size: 0.93rem;
     }
-    .news-row:first-child { border-top: 1px solid rgba(192,170,136,0.5); }
-    .news-dt {
-      font-family: var(--mono);
-      font-size: 0.67rem;
-      color: var(--ink-faint);
-      padding-top: 0.25rem;
-    }
-    .news-row b { color: var(--ink); }
+    .news-row:first-child { border-top: 1px solid #eee; }
+    .ndt { font-size: 0.8rem; color: #888; padding-top: 0.2rem; }
 
-    /* ── pub rows ── */
+    /* publications */
     .pub-row {
       display: grid;
-      grid-template-columns: 148px 1fr;
-      gap: 1.5rem;
-      padding: 1.4rem 0;
-      border-bottom: 1px solid rgba(192,170,136,0.5);
+      grid-template-columns: 140px 1fr;
+      gap: 1.4rem;
+      padding: 1.3rem 0;
+      border-bottom: 1px solid #eee;
       align-items: start;
     }
-    .pub-row:first-child { border-top: 1px solid rgba(192,170,136,0.5); }
+    .pub-row:first-child { border-top: 1px solid #eee; }
 
     .pub-row img {
       width: 100%;
       aspect-ratio: 4/3;
       object-fit: cover;
-      border: 1px solid var(--rule);
-      border-radius: 2px;
-      filter: sepia(18%) contrast(0.92);
+      border: 1px solid #ddd;
     }
 
-    .pub-venue {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.07em;
+    .venue {
+      font-size: 0.78rem;
+      color: #888;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.25rem;
-    }
-
-    .pub-title {
-      font-size: 1rem;
-      font-weight: 500;
-      line-height: 1.4;
-      color: var(--ink);
+      letter-spacing: 0.04em;
       margin-bottom: 0.2rem;
     }
 
-    .pub-authors {
-      font-size: 0.87rem;
-      color: var(--ink-muted);
-      font-style: italic;
-      margin-bottom: 0.5rem;
-    }
+    .ptitle { font-size: 1rem; font-weight: 600; margin-bottom: 0.15rem; line-height: 1.4; }
+    .pauth  { font-size: 0.88rem; color: #555; font-style: italic; margin-bottom: 0.4rem; }
+    .pauth strong { font-style: normal; color: #111; }
 
-    .pub-authors strong { font-style: normal; color: var(--ink-mid); }
+    .ptags { font-size: 0.82rem; display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .ptags a { color: #1a0dab; }
 
-    .pub-tags {
-      font-family: var(--mono);
-      font-size: 0.67rem;
-      display: flex; flex-wrap: wrap; gap: 0.35rem;
-    }
-
-    .pub-tags a {
-      color: var(--ink-muted);
-      border: 1px solid var(--rule);
-      padding: 0.12rem 0.45rem;
-      border-radius: 2px;
-      transition: color 0.12s, border-color 0.12s;
-    }
-    .pub-tags a:hover { color: var(--ink); border-color: var(--ink-muted); text-decoration: none; }
-
-    /* ── experience rows ── */
-    .exp-row {
-      padding: 1.1rem 0;
-      border-bottom: 1px solid rgba(192,170,136,0.5);
-    }
-    .exp-row:first-child { border-top: 1px solid rgba(192,170,136,0.5); }
+    /* experience */
+    .exp-row { padding: 1rem 0; border-bottom: 1px solid #eee; }
+    .exp-row:first-child { border-top: 1px solid #eee; }
     .exp-hd {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 0.15rem;
+      display: flex; justify-content: space-between;
+      align-items: baseline; flex-wrap: wrap; gap: 0.4rem;
+      margin-bottom: 0.1rem;
     }
-    .exp-title { font-size: 1rem; font-weight: 500; }
-    .exp-date {
-      font-family: var(--mono);
-      font-size: 0.67rem;
-      color: var(--ink-faint);
-    }
-    .exp-org { font-size: 0.9rem; color: var(--ink-muted); font-style: italic; margin-bottom: 0.5rem; }
-    .exp-bullets { list-style: none; font-size: 0.9rem; color: var(--ink-muted); }
-    .exp-bullets li { padding-left: 1rem; position: relative; margin-bottom: 0.2rem; }
-    .exp-bullets li::before { content: "—"; position: absolute; left: 0; color: var(--ink-faint); }
+    .etitle { font-size: 1rem; font-weight: 600; }
+    .edate  { font-size: 0.82rem; color: #888; }
+    .eorg   { font-size: 0.9rem; color: #555; font-style: italic; margin-bottom: 0.5rem; }
+    .ebullets { list-style: none; font-size: 0.9rem; color: #444; }
+    .ebullets li { padding-left: 1rem; position: relative; margin-bottom: 0.15rem; }
+    .ebullets li::before { content: "–"; position: absolute; left: 0; color: #aaa; }
 
-    /* ── contact ── */
-    .contact-table { font-size: 0.93rem; border-collapse: collapse; }
-    .contact-table td { padding: 0.35rem 1.5rem 0.35rem 0; vertical-align: top; }
-    .contact-table td:first-child {
-      font-family: var(--mono);
-      font-size: 0.67rem;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: var(--ink-faint);
-      padding-top: 0.45rem;
-      white-space: nowrap;
-    }
+    /* contact */
+    .ctable { border-collapse: collapse; font-size: 0.93rem; }
+    .ctable td { padding: 0.3rem 1.2rem 0.3rem 0; vertical-align: top; }
+    .ctable td:first-child { font-size: 0.8rem; color: #888; text-transform: uppercase; letter-spacing: 0.05em; padding-top: 0.42rem; white-space: nowrap; }
 
-    /* ── footer ── */
-    #footer {
-      margin-top: 2.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--rule);
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--ink-faint);
-      text-align: center;
-      letter-spacing: 0.05em;
-    }
+    /* footer */
+    #foot { margin-top: 2.5rem; border-top: 1px solid #eee; padding-top: 1rem; font-size: 0.8rem; color: #aaa; text-align: center; }
 
-    /* ── mobile ── */
-    @media (max-width: 620px) {
-      #page { padding: 2rem 1.4rem 4rem; }
-      #topnav { justify-content: flex-start; flex-wrap: wrap; gap: 0.7rem; }
-      #header { grid-template-columns: 1fr; gap: 1.2rem; }
-      #header img { width: 110px; }
+    @media (max-width: 580px) {
+      #header { grid-template-columns: 1fr; }
+      #header img { width: 120px; }
       .pub-row { grid-template-columns: 1fr; }
-      .pub-row img { max-width: 160px; }
-      h2 { font-size: 1.25rem; }
+      .pub-row img { max-width: 150px; }
     }
   </style>
 </head>
-
 <body>
-<div id="page">
 
-  <!-- top nav -->
   <div id="topnav">
-    <a href="#about">About</a>
-    <a href="#news">News</a>
-    <a href="#publications">Publications</a>
-    <a href="#experience">Experience</a>
-    <a href="#contact">Contact</a>
+    <a href="#about">[About]</a>
+    <a href="#news">[News]</a>
+    <a href="#publications">[Publications]</a>
+    <a href="#experience">[Experience]</a>
+    <a href="#contact">[Contact]</a>
   </div>
 
   <hr>
 
-  <!-- header -->
   <div id="header">
     <img src="f.jpg" alt="Kartikeya Singh">
-    <div id="header-info">
+    <div>
       <h1>Kartikeya Singh</h1>
-      <p class="header-role">Ph.D. Candidate in Computer Science</p>
+      <p class="role">Ph.D. Candidate in Computer Science</p>
 
-      <p class="header-affil">
-        <strong>Research Scientist Intern</strong><br>
-        <a href="https://www.merl.com">Mitsubishi Electric Research Laboratories (MERL)</a>, Cambridge, MA
-      </p>
-      <p class="header-affil" style="margin-top:0.6rem">
-        <strong>Ph.D. Candidate</strong><br>
-        <a href="https://droneslab.github.io">DRONES Lab</a><br>
-        University at Buffalo
-      </p>
+      <p class="affil"><strong>Research Scientist Intern</strong><br>
+        <a href="https://www.merl.com">Mitsubishi Electric Research Laboratories (MERL)</a>, Cambridge, MA</p>
 
-      <p class="header-email">e-mail: <strong>ksingh35</strong> [at] <strong>buffalo.edu</strong></p>
+      <p class="affil" style="margin-top:0.5rem"><strong>Ph.D. Candidate</strong><br>
+        <a href="https://droneslab.github.io">DRONES Lab</a>, University at Buffalo</p>
 
-      <div class="header-links">
+      <p class="email">e-mail: <strong>ksingh35</strong> [at] <strong>buffalo.edu</strong></p>
+
+      <div class="hlinks">
         <a href="https://scholar.google.com/citations?user=ZYrJj3AAAAAJ">[Google Scholar]</a>
         <a href="https://www.linkedin.com/in/kartikeya-singh1/">[LinkedIn]</a>
         <a href="mailto:ksingh35@buffalo.edu">[Email]</a>
@@ -377,136 +204,89 @@
 
   <hr>
 
-  <p id="welcome">
-    Welcome! I work on enabling legged robots to perceive and navigate complex terrains reliably.
-    Feel free to explore my research and reach out if something catches your eye.
-  </p>
-
-  <div id="secnav" style="margin-top:0.7rem">
-    <a href="#about">[About]</a><span>&nbsp;</span>
-    <a href="#news">[News]</a><span>&nbsp;</span>
-    <a href="#publications">[Publications]</a><span>&nbsp;</span>
-    <a href="#experience">[Experience]</a><span>&nbsp;</span>
-    <a href="#contact">[Contact]</a>
-  </div>
-
   <hr>
 
-  <!-- about -->
   <section id="about">
     <h2>About Me</h2>
-    <p>
-      I am a Ph.D. candidate in Computer Science at the University at Buffalo, working in the
-      <a href="https://droneslab.github.io">Distributed Robotics and Networked Embedded Sensing (DRONES) Lab</a>
-      under Prof. Karthik Dantu. I am currently a Research Scientist Intern at
-      <a href="https://www.merl.com">Mitsubishi Electric Research Laboratories (MERL)</a>, Cambridge,
-      working with <a href="https://www.merl.com/people/dicairano">Dr. Stefano Di Cairano</a>.
-    </p>
-    <p>
-      My research focuses on enabling legged robots to navigate complex and unseen terrains using
-      uncertainty-aware perception and planning. I develop learning-based methods for predicting future
-      footholds, modeling epistemic uncertainty, and generating feasibility-aware costmaps for robust navigation.
-    </p>
-    <p>
-      More broadly, I am interested in bridging perception, control, and planning to build autonomous robotic
-      systems that can reliably operate in real-world environments — with an emphasis on generalization and
-      safety in out-of-distribution scenarios.
-    </p>
+    <p>I am a Ph.D. candidate in Computer Science at the University at Buffalo, working in the <a href="https://droneslab.github.io">Distributed Robotics and Networked Embedded Sensing (DRONES) Lab</a> under Prof. Karthik Dantu. I am currently a Research Scientist Intern at <a href="https://www.merl.com">Mitsubishi Electric Research Laboratories (MERL)</a>, Cambridge, working with <a href="https://www.merl.com/people/dicairano">Dr. Stefano Di Cairano</a>.</p>
+    <p>My research focuses on enabling legged robots to navigate complex and unseen terrains using uncertainty-aware perception and planning. I develop learning-based methods for predicting future footholds, modeling epistemic uncertainty, and generating feasibility-aware costmaps for robust navigation.</p>
+    <p>More broadly, I am interested in bridging perception, control, and planning to build autonomous robotic systems that can reliably operate in real-world environments — with an emphasis on generalization and safety in out-of-distribution scenarios.</p>
   </section>
 
   <hr>
 
-  <!-- news -->
   <section id="news">
     <h2>News</h2>
     <div class="news-row">
-      <span class="news-dt">Jan 2026</span>
-      <span><b>Joined MERL as Research Scientist Intern</b> — working on uncertainty-aware perception and planning for legged robots at Mitsubishi Electric Research Laboratories, Cambridge.</span>
+      <span class="ndt">Jan 2026</span>
+      <span><strong>Joined MERL as Research Scientist Intern</strong> — working on uncertainty-aware perception and planning for legged robots at Mitsubishi Electric Research Laboratories, Cambridge.</span>
     </div>
     <div class="news-row">
-      <span class="news-dt">May 2024</span>
-      <span><b>Paper accepted at Workshop on Field Robotics, ICRA 2025</b> — recognized as one of the top 10 emerging researchers at WFR in Atlanta, Georgia.</span>
+      <span class="ndt">May 2024</span>
+      <span><strong>Paper accepted at Workshop on Field Robotics, ICRA 2025</strong> — recognized as one of the top 10 emerging researchers at WFR in Atlanta, Georgia.</span>
     </div>
     <div class="news-row">
-      <span class="news-dt">May 2024</span>
-      <span><b>Represented SUNY Buffalo at AI Expo, Albany NY</b> — connected with SUNY Chancellor Dr. John B. King and state policymakers.</span>
+      <span class="ndt">May 2024</span>
+      <span><strong>Represented SUNY Buffalo at AI Expo, Albany NY</strong> — connected with SUNY Chancellor Dr. John B. King and state policymakers.</span>
     </div>
     <div class="news-row">
-      <span class="news-dt">Apr 2024</span>
-      <span><b>Paper accepted at ICRA 2024</b> — L-DYNO framework nominated for best paper in robotic perception.</span>
+      <span class="ndt">Apr 2024</span>
+      <span><strong>Paper accepted at ICRA 2024</strong> — L-DYNO framework nominated for best paper in robotic perception.</span>
     </div>
   </section>
 
   <hr>
 
-  <!-- publications -->
   <section id="publications">
     <h2>Publications</h2>
 
     <div class="pub-row">
       <img src="IMG_1611-ezgif.com-video-to-gif-converter.gif" alt="CART">
       <div>
-        <div class="pub-venue">RaL 2025 &middot; Under Review</div>
-        <div class="pub-title">CART: Context-Aware Terrain Adaptation for Stable Locomotion</div>
-        <div class="pub-authors"><strong>K Singh</strong>, Y Kim, Y Turkar, K Dantu</div>
-        <div class="pub-tags">
-          <a href="#">[Paper]</a>
-          <a href="#">[Video]</a>
-          <a href="#">[Code]</a>
-        </div>
+        <div class="venue">RaL 2025 · Under Review</div>
+        <div class="ptitle">CART: Context-Aware Terrain Adaptation for Stable Locomotion</div>
+        <div class="pauth"><strong>K Singh</strong>, Y Kim, Y Turkar, K Dantu</div>
+        <div class="ptags"><a href="#">[Paper]</a> <a href="#">[Video]</a> <a href="#">[Code]</a></div>
       </div>
     </div>
 
     <div class="pub-row">
       <img src="inspector.gif" alt="Culvert Inspection">
       <div>
-        <div class="pub-venue">ICRA 2025 &middot; Workshop on Field Robotics</div>
-        <div class="pub-title">Autonomous Culvert Inspection on the Erie Canal using Legged Robots</div>
-        <div class="pub-authors"><strong>K Singh</strong>, Y Turkar, Y Kim, M Lengel, K Dantu</div>
-        <div class="pub-tags">
-          <a href="data/Canals_IMPACT_WFR_compressed-1.pdf">[Paper]</a>
-          <a href="https://droneslab.github.io/INSPECTOR/">[Project]</a>
-          <a href="https://www.youtube.com/watch?v=qXXrJpCrDek">[Video]</a>
-        </div>
+        <div class="venue">ICRA 2025 · Workshop on Field Robotics</div>
+        <div class="ptitle">Autonomous Culvert Inspection on the Erie Canal using Legged Robots</div>
+        <div class="pauth"><strong>K Singh</strong>, Y Turkar, Y Kim, M Lengel, K Dantu</div>
+        <div class="ptags"><a href="data/Canals_IMPACT_WFR_compressed-1.pdf">[Paper]</a> <a href="https://droneslab.github.io/INSPECTOR/">[Project]</a> <a href="https://www.youtube.com/watch?v=qXXrJpCrDek">[Video]</a></div>
       </div>
     </div>
 
     <div class="pub-row">
       <img src="panos.gif" alt="PANOS">
       <div>
-        <div class="pub-venue">NERC 2024</div>
-        <div class="pub-title">PANOS: Payload-Aware Navigation in Offroad Scenarios</div>
-        <div class="pub-authors"><strong>K Singh</strong>, Y Turkar, C Alukal, K Dantu</div>
-        <div class="pub-tags">
-          <a href="https://arxiv.org/abs/2409.16566">[Paper]</a>
-          <a href="https://droneslab.github.io/IMPACT/">[Project]</a>
-        </div>
+        <div class="venue">NERC 2024</div>
+        <div class="ptitle">PANOS: Payload-Aware Navigation in Offroad Scenarios</div>
+        <div class="pauth"><strong>K Singh</strong>, Y Turkar, C Alukal, K Dantu</div>
+        <div class="ptags"><a href="https://arxiv.org/abs/2409.16566">[Paper]</a> <a href="https://droneslab.github.io/IMPACT/">[Project]</a></div>
       </div>
     </div>
 
     <div class="pub-row">
       <img src="ldyno.gif" alt="L-DYNO">
       <div>
-        <div class="pub-venue">ICRA 2025</div>
-        <div class="pub-title">L-DYNO: Framework to Learn Consistent Visual Features Using Robot's Motion</div>
-        <div class="pub-authors"><strong>K Singh</strong>, C Adhivarahan, K Dantu</div>
-        <div class="pub-tags">
-          <a href="https://ieeexplore.ieee.org/abstract/document/10611097">[Paper]</a>
-          <a href="https://ieeexplore.ieee.org/abstract/document/10611097">[Code]</a>
-        </div>
+        <div class="venue">ICRA 2025</div>
+        <div class="ptitle">L-DYNO: Framework to Learn Consistent Visual Features Using Robot's Motion</div>
+        <div class="pauth"><strong>K Singh</strong>, C Adhivarahan, K Dantu</div>
+        <div class="ptags"><a href="https://ieeexplore.ieee.org/abstract/document/10611097">[Paper]</a> <a href="https://ieeexplore.ieee.org/abstract/document/10611097">[Code]</a></div>
       </div>
     </div>
 
     <div class="pub-row">
       <img src="offseg.gif" alt="OFFSEG">
       <div>
-        <div class="pub-venue">CASE 2021</div>
-        <div class="pub-title">OFFSEG: A Semantic Segmentation Framework for Off-Road Driving</div>
-        <div class="pub-authors">K Viswanath*, <strong>K Singh*</strong>, P Jiang, PB Sujit, S Saripalli</div>
-        <div class="pub-tags">
-          <a href="https://ieeexplore.ieee.org/abstract/document/9551643">[Paper]</a>
-          <a href="https://github.com/kasiv008/OFFSEG">[Code]</a>
-        </div>
+        <div class="venue">CASE 2021</div>
+        <div class="ptitle">OFFSEG: A Semantic Segmentation Framework for Off-Road Driving</div>
+        <div class="pauth">K Viswanath*, <strong>K Singh*</strong>, P Jiang, PB Sujit, S Saripalli</div>
+        <div class="ptags"><a href="https://ieeexplore.ieee.org/abstract/document/9551643">[Paper]</a> <a href="https://github.com/kasiv008/OFFSEG">[Code]</a></div>
       </div>
     </div>
 
@@ -514,17 +294,16 @@
 
   <hr>
 
-  <!-- experience -->
   <section id="experience">
     <h2>Experience</h2>
 
     <div class="exp-row">
       <div class="exp-hd">
-        <span class="exp-title">Research Scientist Intern</span>
-        <span class="exp-date">Jan 2026 – Present</span>
+        <span class="etitle">Research Scientist Intern</span>
+        <span class="edate">Jan 2026 – Present</span>
       </div>
-      <div class="exp-org">Mitsubishi Electric Research Laboratories (MERL), Cambridge, MA &mdash; with <a href="https://www.merl.com/people/dicairano">Dr. Stefano Di Cairano</a></div>
-      <ul class="exp-bullets">
+      <div class="eorg">Mitsubishi Electric Research Laboratories (MERL), Cambridge, MA &mdash; with <a href="https://www.merl.com/people/dicairano">Dr. Stefano Di Cairano</a></div>
+      <ul class="ebullets">
         <li>Researching uncertainty-aware costmaps and task-conditioned perception for legged robot navigation</li>
         <li>Designing learning-based models for robust foothold prediction and out-of-distribution terrain awareness</li>
         <li>Bridging perception and planning for reliable deployment in challenging environments</li>
@@ -533,11 +312,11 @@
 
     <div class="exp-row">
       <div class="exp-hd">
-        <span class="exp-title">Research Assistant</span>
-        <span class="exp-date">2023 – Present</span>
+        <span class="etitle">Research Assistant</span>
+        <span class="edate">2023 – Present</span>
       </div>
-      <div class="exp-org">University at Buffalo — DRONES Lab</div>
-      <ul class="exp-bullets">
+      <div class="eorg">University at Buffalo — DRONES Lab</div>
+      <ul class="ebullets">
         <li>Developed PANOS for legged robot navigation in unstructured environments</li>
         <li>Created L-DYNO framework for visual feature learning using robot motion</li>
         <li>Implemented terrain adaptation algorithms for quadruped robots</li>
@@ -546,11 +325,11 @@
 
     <div class="exp-row">
       <div class="exp-hd">
-        <span class="exp-title">Teaching Assistant</span>
-        <span class="exp-date">2022 – 2023</span>
+        <span class="etitle">Teaching Assistant</span>
+        <span class="edate">2022 – 2023</span>
       </div>
-      <div class="exp-org">University at Buffalo</div>
-      <ul class="exp-bullets">
+      <div class="eorg">University at Buffalo</div>
+      <ul class="ebullets">
         <li>Robotic Algorithms (CSE 568/468) and Data Intensive Computing (CSE 587)</li>
         <li>Developed course materials and supervised student projects</li>
       </ul>
@@ -558,11 +337,11 @@
 
     <div class="exp-row">
       <div class="exp-hd">
-        <span class="exp-title">Research Associate</span>
-        <span class="exp-date">2020 – 2022</span>
+        <span class="etitle">Research Associate</span>
+        <span class="edate">2020 – 2022</span>
       </div>
-      <div class="exp-org">IISER Bhopal</div>
-      <ul class="exp-bullets">
+      <div class="eorg">IISER Bhopal</div>
+      <ul class="ebullets">
         <li>Developed OFFSEG framework for off-road semantic segmentation</li>
         <li>Implemented multi-modal sensor fusion and contributed to agricultural robot navigation</li>
       </ul>
@@ -572,17 +351,16 @@
 
   <hr>
 
-  <!-- contact -->
   <section id="contact">
     <h2>Contact</h2>
-    <table class="contact-table">
+    <table class="ctable">
       <tr>
         <td>Email</td>
         <td><a href="mailto:ksingh35@buffalo.edu">ksingh35@buffalo.edu</a></td>
       </tr>
       <tr>
         <td>Scholar</td>
-        <td><a href="https://scholar.google.com/citations?user=ZYrJj3AAAAAJ" target="_blank">Google Scholar Profile</a></td>
+        <td><a href="https://scholar.google.com/citations?user=ZYrJj3AAAAAJ" target="_blank">Google Scholar</a></td>
       </tr>
       <tr>
         <td>LinkedIn</td>
@@ -595,10 +373,7 @@
     </table>
   </section>
 
-  <div id="footer">
-    Kartikeya Singh &middot; University at Buffalo &middot; 2026
-  </div>
+  <div id="foot">Kartikeya Singh &middot; University at Buffalo &middot; 2026</div>
 
-</div>
 </body>
 </html>
