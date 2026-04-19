@@ -1,1064 +1,604 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>Kartikeya Singh [PhD@UB]</title>
-  <meta name="author" content="Kartikeya Singh">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Open+Sans:wght@400;600&display=swap">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kartikeya Singh</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&display=swap">
 
   <style>
     :root {
-      --primary-color: #2A2F4F;
-      --secondary-color: #4E4FEB;
-      --accent-color: #FF6B6B;
-      --text-color: #2D4059;
-      --light-bg: #F8F9FA;
-      --raw-border: #e0e0e0;
+      --ink:       #1a1208;
+      --ink-mid:   #3d3020;
+      --ink-muted: #6a5840;
+      --ink-faint: #a89070;
+      --rule:      #c0aa88;
+      --paper:     #f2e8d0;
+      --accent:    #5a2008;
+      --serif: 'EB Garamond', Georgia, serif;
+      --mono:  'DM Mono', monospace;
     }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Open Sans', sans-serif;
-      background: #f5f7fa;
-      color: var(--text-color);
-      line-height: 1.7;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
+      font-family: var(--serif);
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--ink);
+      background: #282018;
+      min-height: 100vh;
     }
 
-    h1, h2, h3, h4 {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 600;
-      margin: 0.5em 0;
-      color: var(--primary-color);
+    /* ── the page ── */
+    #page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3rem 3.5rem 5rem;
+      min-height: 100vh;
+      background-color: var(--paper);
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0.4'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.065'/%3E%3C/svg%3E"),
+        repeating-linear-gradient(180deg, transparent, transparent 23px, rgba(140,105,45,0.048) 23px, rgba(140,105,45,0.048) 24px);
+      box-shadow:
+        0 0 0 1px rgba(100,70,20,0.2),
+        0 4px 20px rgba(0,0,0,0.3),
+        0 16px 60px rgba(0,0,0,0.35),
+        inset 0 0 100px rgba(90,60,15,0.06);
+      position: relative;
     }
 
-    .container {
-      max-width: 1200px;
-      margin: 100px auto 40px;
-      padding: 25px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    /* worn corner tints */
+    #page::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(ellipse at   0%   0%, rgba(80,50,10,0.13) 0%, transparent 25%),
+        radial-gradient(ellipse at 100%   0%, rgba(70,45,8,0.10)  0%, transparent 20%),
+        radial-gradient(ellipse at   0% 100%, rgba(70,45,8,0.10)  0%, transparent 22%),
+        radial-gradient(ellipse at 100% 100%, rgba(80,50,10,0.13) 0%, transparent 26%);
     }
 
-    .header {
-      background: white;
-      border-bottom: 1px solid var(--raw-border);
-      color: var(--primary-color);
-      padding: 1rem;
-      position: fixed;
+    #page > * { position: relative; z-index: 1; }
+
+    /* ── links ── */
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ── horizontal rule ── */
+    hr {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 1.8rem 0;
+    }
+
+    /* ── nav strip ── */
+    #topnav {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.6rem;
+      display: flex;
+      justify-content: flex-end;
+      gap: 1.2rem;
+    }
+    #topnav a { color: var(--ink-muted); }
+    #topnav a:hover { color: var(--accent); text-decoration: none; }
+
+    /* ── header: photo + info ── */
+    #header {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 2.2rem;
+      align-items: start;
+      margin-bottom: 0.5rem;
+    }
+
+    #header img {
+      width: 100%;
+      border-radius: 2px;
+      filter: sepia(20%) contrast(0.93);
+      border: 1px solid var(--rule);
+      box-shadow: 2px 3px 10px rgba(0,0,0,0.13);
+    }
+
+    #header-info h1 {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 0.1rem;
+      color: var(--ink);
+    }
+
+    .header-role {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      color: var(--ink-muted);
+      margin-bottom: 1rem;
+    }
+
+    .header-affil {
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+      line-height: 1.5;
+    }
+
+    .header-affil strong { color: var(--ink-mid); }
+
+    .header-email {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--ink-muted);
+      margin: 0.8rem 0 0.6rem;
+    }
+
+    .header-links {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.03em;
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      transition: all 0.3s ease;
+      gap: 0.3rem 0;
     }
 
-    .header-brand {
-      font-size: 1.3rem;
-      line-height: 1.2;
-      font-weight: 600;
+    .header-links a {
+      color: var(--ink-mid);
+      margin-right: 0.15rem;
     }
 
-    .header-brand .subtitle {
-      font-size: 0.8rem;
-      display: block;
+    .header-links span { color: var(--ink-faint); }
+
+    /* ── welcome blurb ── */
+    #welcome {
+      font-size: 0.97rem;
+      color: var(--ink-mid);
+      margin: 0.4rem 0 0.2rem;
+      font-style: italic;
+    }
+
+    /* ── section nav ── */
+    #secnav {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.2rem;
+    }
+    #secnav a { color: var(--ink-muted); }
+    #secnav a:hover { color: var(--accent); text-decoration: none; }
+    #secnav span { color: var(--rule); }
+
+    /* ── section headings ── */
+    h2 {
+      font-family: var(--serif);
+      font-size: 1.45rem;
       font-weight: 400;
-      margin-top: 0.2rem;
-      color: #666;
+      color: var(--ink);
+      margin: 2.2rem 0 0.9rem;
     }
 
-    .menu-toggle {
-      background: none;
-      border: none;
-      color: var(--primary-color);
-      font-size: 1.5rem;
-      cursor: pointer;
-      display: none;
+    h3 {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--ink-mid);
+      margin: 1.6rem 0 0.5rem;
     }
 
-    .nav {
-      display: flex;
-      gap: 1rem;
-      transition: all 0.3s ease;
-    }
+    p { margin-bottom: 0.8rem; }
+    p:last-child { margin-bottom: 0; }
 
-    .nav a {
-      color: var(--primary-color);
-      text-decoration: none;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-      border: 1px solid transparent;
-    }
-
-    .nav a:hover, .nav a:focus {
-      border-color: var(--primary-color);
-      background: rgba(42, 47, 79, 0.05);
-    }
-
-    .profile-photo {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      border: 1px solid var(--raw-border);
-    }
-
-    .section {
-      margin: 2.5rem 0;
-      padding: 1.8rem;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      border: 1px solid var(--raw-border);
-    }
-
-    /* UPDATED: Container for about and news */
-    .about-news-container {
-      display: flex;
-      gap: 25px; /* Increased gap for better spacing */
-      margin: 0.5rem 0;
-    }
-
-    .about-section {
-      flex: 1; /* Changed from 1 to 1.5 */
-      display: flex;
-      flex-direction: row;
-      gap: 15px; /* Increased gap */
-    }
-
-    .about-text {
-      flex: 1;
-    }
-
-    /* Profile photo container - added max-width */
-    .profile-photo-container {
-      max-width: 250px; /* Added max-width constraint */
-      margin: 0 auto; /* Center the photo */
-    }
-
-    /*  Styles - UPDATED FOR SCROLLABLE PANEL */
-    .news-panel {
-      flex: 1; /* Changed from 1 to 1.5 */
-      display: flex;
-      flex-direction: column;
-      min-width: 320px;
-      max-height: 600px;
-      background: var(--light-bg);
-      border-radius: 8px;
-      border: 1px solid var(--raw-border);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-      overflow: hidden;
-    }
-
-    .news-header {
-      padding: 20px;
-      background: var(--primary-color);
-      color: white;
-      position: relative;
-    }
-
-    .news-header h2 {
-      margin: 0;
-      color: white;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .news-header h2 i {
-      font-size: 1.2em;
-    }
-
-    .news-container {
-      overflow-y: auto;
-      padding: 20px;
-      height: 100%;
-    }
-
-    .news-grid {
+    /* ── news ── */
+    .news-row {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
+      grid-template-columns: 82px 1fr;
+      gap: 0.8rem;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid rgba(192,170,136,0.5);
+      font-size: 0.93rem;
     }
-
-    .news-item {
-      padding: 1.5rem;
-      background: white;
-      border-radius: 8px;
-      border: 1px solid var(--raw-border);
-      transition: transform 0.3s ease;
-      position: relative;
-    }
-
-    .news-item:hover {
-      transform: translateY(-3px);
-      border-color: var(--secondary-color);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-
-    .news-date {
-      font-size: 0.85rem;
-      color: var(--secondary-color);
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-    }
-
-    .news-date i {
-      margin-right: 8px;
-      font-size: 1rem;
-    }
-
-    .news-item::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .news-item:hover::after {
-      opacity: 1;
-    }
-
-    /* Scrollbar styling for news container */
-    .news-container::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    .news-container::-webkit-scrollbar-track {
-      background: #f1f1f1;
-      border-radius: 10px;
-    }
-
-    .news-container::-webkit-scrollbar-thumb {
-      background: var(--secondary-color);
-      border-radius: 10px;
-    }
-
-    .news-container::-webkit-scrollbar-thumb:hover {
-      background: #3a3ac7;
-    }
-
-    /* Education Styles */
-    .education-grid {
-      display: grid;
-      gap: 2rem;
-      margin-top: 1.5rem;
-    }
-
-    .education-item {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 1.5rem;
-      padding: 1.5rem;
-      background: var(--light-bg);
-      border-radius: 8px;
-      border: 1px solid var(--raw-border);
-    }
-
-    .education-icon {
-      font-size: 1.75rem;
-      color: var(--primary-color);
+    .news-row:first-child { border-top: 1px solid rgba(192,170,136,0.5); }
+    .news-dt {
+      font-family: var(--mono);
+      font-size: 0.67rem;
+      color: var(--ink-faint);
       padding-top: 0.25rem;
     }
+    .news-row b { color: var(--ink); }
 
-    .education-details h3 {
-      margin: 0 0 0.75rem;
-    }
-
-    .education-meta {
-      display: flex;
-      gap: 1.5rem;
-      margin-bottom: 0.75rem;
-      font-size: 0.9em;
-      color: #666;
-    }
-
-    .education-gpa {
-      margin-bottom: 1rem;
-      padding: 0.5rem;
-      background: white;
-      border-radius: 6px;
-      display: inline-block;
-      font-weight: 500;
-      border: 1px solid var(--raw-border);
-    }
-
-    .education-lab {
-      margin: 1rem 0;
-      padding-left: 1rem;
-      border-left: 3px solid var(--secondary-color);
-    }
-
-    .education-advisor {
-      display: block;
-      margin-top: 0.5rem;
-      font-style: italic;
-      color: #666;
-    }
-
-    .education-highlights {
-      margin: 1rem 0 0;
-      padding-left: 1.25rem;
-      list-style-type: none;
-    }
-
-    .education-highlights li {
-      position: relative;
-      padding-left: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .education-highlights li::before {
-      content: "▹";
-      position: absolute;
-      left: 0;
-      color: var(--accent-color);
-    }
-
-    /* Publications Styles */
-    .publications-grid {
+    /* ── pub rows ── */
+    .pub-row {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 2rem;
-      margin-top: 1.5rem;
+      grid-template-columns: 148px 1fr;
+      gap: 1.5rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid rgba(192,170,136,0.5);
+      align-items: start;
     }
+    .pub-row:first-child { border-top: 1px solid rgba(192,170,136,0.5); }
 
-    .pub-item {
-      display: flex;
-      flex-direction: column;
-      padding: 1.5rem;
-      background: var(--light-bg);
-      border-radius: 8px;
-      border: 1px solid var(--raw-border);
-      transition: all 0.3s ease;
-      overflow: hidden;
-    }
-
-    .pub-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      border-color: var(--secondary-color);
-    }
-
-    .pub-gif-container {
-      position: relative;
+    .pub-row img {
       width: 100%;
-      height: 200px;
-      overflow: hidden;
-      border-radius: 6px;
-      margin-bottom: 1rem;
-      background: #f0f2f5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      filter: sepia(18%) contrast(0.92);
     }
 
-    .pub-gif {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      border-radius: 4px;
-      transition: transform 0.3s ease;
-    }
-
-    .pub-item:hover .pub-gif {
-      transform: scale(1.03);
-    }
-
-    .pub-details {
-      flex: 1;
+    .pub-venue {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
     }
 
     .pub-title {
-      font-size: 1.1rem;
-      margin: 0 0 0.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.4;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
     }
 
     .pub-authors {
-      font-size: 0.9rem;
-      color: #666;
+      font-size: 0.87rem;
+      color: var(--ink-muted);
+      font-style: italic;
       margin-bottom: 0.5rem;
-      line-height: 1.4;
     }
 
-    .pub-meta {
+    .pub-authors strong { font-style: normal; color: var(--ink-mid); }
+
+    .pub-tags {
+      font-family: var(--mono);
+      font-size: 0.67rem;
+      display: flex; flex-wrap: wrap; gap: 0.35rem;
+    }
+
+    .pub-tags a {
+      color: var(--ink-muted);
+      border: 1px solid var(--rule);
+      padding: 0.12rem 0.45rem;
+      border-radius: 2px;
+      transition: color 0.12s, border-color 0.12s;
+    }
+    .pub-tags a:hover { color: var(--ink); border-color: var(--ink-muted); text-decoration: none; }
+
+    /* ── experience rows ── */
+    .exp-row {
+      padding: 1.1rem 0;
+      border-bottom: 1px solid rgba(192,170,136,0.5);
+    }
+    .exp-row:first-child { border-top: 1px solid rgba(192,170,136,0.5); }
+    .exp-hd {
       display: flex;
       justify-content: space-between;
-      font-size: 0.85rem;
-      margin-bottom: 1rem;
-      color: var(--secondary-color);
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.15rem;
+    }
+    .exp-title { font-size: 1rem; font-weight: 500; }
+    .exp-date {
+      font-family: var(--mono);
+      font-size: 0.67rem;
+      color: var(--ink-faint);
+    }
+    .exp-org { font-size: 0.9rem; color: var(--ink-muted); font-style: italic; margin-bottom: 0.5rem; }
+    .exp-bullets { list-style: none; font-size: 0.9rem; color: var(--ink-muted); }
+    .exp-bullets li { padding-left: 1rem; position: relative; margin-bottom: 0.2rem; }
+    .exp-bullets li::before { content: "—"; position: absolute; left: 0; color: var(--ink-faint); }
+
+    /* ── contact ── */
+    .contact-table { font-size: 0.93rem; border-collapse: collapse; }
+    .contact-table td { padding: 0.35rem 1.5rem 0.35rem 0; vertical-align: top; }
+    .contact-table td:first-child {
+      font-family: var(--mono);
+      font-size: 0.67rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      padding-top: 0.45rem;
+      white-space: nowrap;
     }
 
-    .pub-links {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-
-    .pub-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.3rem;
-      padding: 0.5rem;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      transition: all 0.2s ease;
-      text-decoration: none;
-      border: 1px solid;
+    /* ── footer ── */
+    #footer {
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--ink-faint);
       text-align: center;
+      letter-spacing: 0.05em;
     }
 
-    .pub-link:hover {
-      transform: translateY(-2px);
-      opacity: 0.9;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-    }
-
-    .paper-link { 
-      background: rgba(42, 47, 79, 0.1); 
-      color: var(--primary-color);
-      border-color: rgba(42, 47, 79, 0.2);
-    }
-    .video-link { 
-      background: rgba(255, 107, 107, 0.1); 
-      color: var(--accent-color);
-      border-color: rgba(255, 107, 107, 0.2);
-    }
-    .cite-link { 
-      background: rgba(248, 249, 250, 0.8); 
-      color: var(--text-color);
-      border-color: var(--raw-border);
-    }
-    .code-link { 
-      background: rgba(78, 79, 235, 0.1); 
-      color: var(--secondary-color);
-      border-color: rgba(78, 79, 235, 0.2);
-    }
-    .gif-link { 
-      background: rgba(76, 175, 80, 0.1); 
-      color: #4CAF50;
-      border-color: rgba(76, 175, 80, 0.2);
-    }
-
-    /* Experience Styles */
-    .experience-grid {
-      display: grid;
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-    }
-
-    .experience-item {
-      padding: 1.5rem;
-      background: var(--light-bg);
-      border-radius: 8px;
-      border: 1px solid var(--raw-border);
-    }
-
-    .experience-title {
-      font-size: 1.1rem;
-      margin: 0 0 0.5rem;
-    }
-
-    .experience-meta {
-      display: flex;
-      gap: 1.5rem;
-      margin-bottom: 0.75rem;
-      font-size: 0.9em;
-      color: #666;
-    }
-
-    .experience-highlights {
-      margin: 1rem 0 0;
-      padding-left: 1.25rem;
-      list-style-type: none;
-    }
-
-    .experience-highlights li {
-      position: relative;
-      padding-left: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .experience-highlights li::before {
-      content: "▹";
-      position: absolute;
-      left: 0;
-      color: var(--accent-color);
-    }
-
-    /* Contact Styles */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-    }
-
-    .contact-item {
-      padding: 1.5rem;
-      background: var(--light-bg);
-      border-radius: 8px;
-      border: 1px solid var(--raw-border);
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .contact-icon {
-      font-size: 1.5rem;
-      color: var(--secondary-color);
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: rgba(78, 79, 235, 0.1);
-    }
-
-    .contact-details a {
-      color: var(--secondary-color);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .contact-details a:hover {
-      color: var(--primary-color);
-      text-decoration: underline;
-    }
-
-    @media (max-width: 900px) {
-      .container {
-        margin-top: 80px;
-        padding: 15px;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .nav {
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        margin-top: 1rem;
-        background: white;
-        border-radius: 8px;
-        padding: 1rem;
-        border: 1px solid var(--raw-border);
-      }
-
-      .nav.active {
-        display: flex;
-      }
-
-      .header-brand {
-        font-size: 1.1rem;
-      }
-
-      /* Adjust layout for mobile */
-      .about-news-container {
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .news-panel {
-        max-height: 450px;
-        min-width: auto;
-      }
-
-      .profile-photo-container {
-        max-width: 100px;
-        margin: 0 auto;
-      }
-
-      .section {
-        margin: 1.5rem 0;
-        padding: 1rem;
-      }
-
-      .education-meta {
-        flex-direction: column;
-        gap: 0.5rem;
-      }
-      
-      .education-item {
-        grid-template-columns: 1fr;
-        padding: 1rem;
-      }
-      
-      .education-icon {
-        display: none;
-      }
-      
-      .pub-gif-container {
-        height: 180px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .header {
-        padding: 0.8rem;
-      }
-
-      .header-brand {
-        font-size: 1rem;
-      }
-
-      .container {
-        margin-top: 70px;
-      }
-
-      h2 {
-        font-size: 1.5rem;
-      }
-      
-      .pub-gif-container {
-        height: 160px;
-      }
-      
-      .pub-links {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-    
-    /* NEW: Responsive adjustments for about section */
-    @media (min-width: 901px) and (max-width: 1100px) {
-      .about-news-container {
-        gap: 15px;
-      }
-      
-      .about-section {
-        flex: 1.3;
-      }
-      
-      .news-panel {
-        flex: 1.7;
-      }
-    }
-    
-    @media (min-width: 1101px) {
-      .about-news-container {
-        gap: 20px;
-      }
-      
-      .about-section {
-        flex: 1;
-      }
-      
-      .news-panel {
-        flex: 2;
-      }
+    /* ── mobile ── */
+    @media (max-width: 620px) {
+      #page { padding: 2rem 1.4rem 4rem; }
+      #topnav { justify-content: flex-start; flex-wrap: wrap; gap: 0.7rem; }
+      #header { grid-template-columns: 1fr; gap: 1.2rem; }
+      #header img { width: 110px; }
+      .pub-row { grid-template-columns: 1fr; }
+      .pub-row img { max-width: 160px; }
+      h2 { font-size: 1.25rem; }
     }
   </style>
 </head>
 
 <body>
-  <div class="header">
-    <div class="header-content">
-      <div class="header-brand">
-        Kartikeya Singh
-        <span class="subtitle">Ph.D. Candidate in Computer Science</span>
+<div id="page">
+
+  <!-- top nav -->
+  <div id="topnav">
+    <a href="#about">About</a>
+    <a href="#news">News</a>
+    <a href="#publications">Publications</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <hr>
+
+  <!-- header -->
+  <div id="header">
+    <img src="f.jpg" alt="Kartikeya Singh">
+    <div id="header-info">
+      <h1>Kartikeya Singh</h1>
+      <p class="header-role">Ph.D. Candidate in Computer Science</p>
+
+      <p class="header-affil">
+        <strong>Research Scientist Intern</strong><br>
+        <a href="https://www.merl.com">Mitsubishi Electric Research Laboratories (MERL)</a>, Cambridge, MA
+      </p>
+      <p class="header-affil" style="margin-top:0.6rem">
+        <strong>Ph.D. Candidate</strong><br>
+        <a href="https://droneslab.github.io">DRONES Lab</a><br>
+        University at Buffalo
+      </p>
+
+      <p class="header-email">e-mail: <strong>ksingh35</strong> [at] <strong>buffalo.edu</strong></p>
+
+      <div class="header-links">
+        <a href="https://scholar.google.com/citations?user=ZYrJj3AAAAAJ">[Google Scholar]</a>
+        <a href="https://www.linkedin.com/in/kartikeya-singh1/">[LinkedIn]</a>
+        <a href="mailto:ksingh35@buffalo.edu">[Email]</a>
       </div>
-      <button class="menu-toggle" aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-      </button>
-      <nav class="nav">
-        <a href="#about">About</a>
-        <a href="#news">News</a>
-        <a href="#experience">Experience</a>
-        <a href="#publications">Publications</a>
-        <a href="#contact">Contact</a>
-      </nav>
     </div>
   </div>
 
-  <div class="container">
-    <!-- About Section and News Panel Side by Side -->
-    <div class="about-news-container">
-      <!-- About Section -->
-      <section id="about" class="section">
-        <h2>About Me</h2>
-        <div class="about-section">
-          <div class="profile-photo-container">
-            <img src="f.jpg" alt="Kartikeya Singh" class="profile-photo">
-          </div>
-          <div class="about-text">
-  <p>
-    I am a Ph.D. candidate in Computer Science at the University at Buffalo, working in the Distributed Robotics 
-    and Networked Embedded Sensing (DRONES) Lab under Prof. Karthik Dantu. I am currently a Research Scientist 
-    Intern at Mitsubishi Electric Research Laboratories (MERL), Cambridge, where I work with 
-    <a href="https://www.merl.com/people/dicairano" target="_blank" style="color: var(--secondary-color); text-decoration: none;">
-      Dr. Stefano Di Cairano
-    </a>.
+  <hr>
+
+  <p id="welcome">
+    Welcome! I work on enabling legged robots to perceive and navigate complex terrains reliably.
+    Feel free to explore my research and reach out if something catches your eye.
   </p>
 
-  <p>
-    My research focuses on enabling legged robots to navigate complex and unseen terrains using uncertainty-aware 
-    perception and planning. I develop learning-based methods for predicting future footholds, modeling epistemic 
-    uncertainty, and generating feasibility-aware costmaps for robust navigation.
-  </p>
-
-  <p>
-    More broadly, I am interested in bridging perception, control, and planning to build autonomous robotic systems 
-    that can reliably operate in real-world environments. My work combines simulation and real-world experiments on 
-    platforms such as quadruped robots, with an emphasis on generalization and safety in out-of-distribution scenarios.
-  </p>
-</div>
-      </section>
-
-      <!-- News Section as Scrollable Panel -->
-      <section id="news">
-        
-        <div class="news-panel">
-          <div class="news-header">
-            <h2><i class="fas fa-bullhorn"></i> Latest News</h2>
-          </div>
-          <div class="news-container">
-            <div class="news-grid">
-              <div class="news-item">
-    <div class="news-date">
-      <i class="fas fa-calendar-alt"></i> Jan 2026
-    </div>
-    <h3>Joined MERL as Research Scientist Intern</h3>
-    <p>Started working at Mitsubishi Electric Research Laboratories (MERL), Cambridge, focusing on uncertainty-aware perception and planning for legged robots.</p>
+  <div id="secnav" style="margin-top:0.7rem">
+    <a href="#about">[About]</a><span>&nbsp;</span>
+    <a href="#news">[News]</a><span>&nbsp;</span>
+    <a href="#publications">[Publications]</a><span>&nbsp;</span>
+    <a href="#experience">[Experience]</a><span>&nbsp;</span>
+    <a href="#contact">[Contact]</a>
   </div>
-              <div class="news-item">
-                <div class="news-date">
-                  <i class="fas fa-calendar-alt"></i> May 2024
-                </div>
-                <h3>Our Paper Accepted at Workshop in Field Robotics at ICRA 2025</h3>
-                <p>Recognized as one of the top 10 emerging researchers at the Workshop on Field Robotics during ICRA 2025 in Atlanta, Georgia</p>
-              </div>
-              <div class="news-item">
-                <div class="news-date">
-                  <i class="fas fa-calendar-alt"></i> May 2024
-                </div>
-                <h3>Represented SUNY Buffalo at AI expo in Albany, NY</h3>
-                <p>Honored to connect with leaders like SUNY Chancellor Dr. John B. King (former U.S. Secretary of Education) and state policymakers.</p>
-              </div>
-              <div class="news-item">
-                <div class="news-date">
-                  <i class="fas fa-calendar-alt"></i> April 2024
-                </div>
-                <h3>Paper got accepted at ICRA 2024</h3>
-                <p>L-DYNO framework nominated for best paper in robotic perception category.</p>
-              </div>
-              
-              
-              
-              
-            </div>
-          </div>
+
+  <hr>
+
+  <!-- about -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I am a Ph.D. candidate in Computer Science at the University at Buffalo, working in the
+      <a href="https://droneslab.github.io">Distributed Robotics and Networked Embedded Sensing (DRONES) Lab</a>
+      under Prof. Karthik Dantu. I am currently a Research Scientist Intern at
+      <a href="https://www.merl.com">Mitsubishi Electric Research Laboratories (MERL)</a>, Cambridge,
+      working with <a href="https://www.merl.com/people/dicairano">Dr. Stefano Di Cairano</a>.
+    </p>
+    <p>
+      My research focuses on enabling legged robots to navigate complex and unseen terrains using
+      uncertainty-aware perception and planning. I develop learning-based methods for predicting future
+      footholds, modeling epistemic uncertainty, and generating feasibility-aware costmaps for robust navigation.
+    </p>
+    <p>
+      More broadly, I am interested in bridging perception, control, and planning to build autonomous robotic
+      systems that can reliably operate in real-world environments — with an emphasis on generalization and
+      safety in out-of-distribution scenarios.
+    </p>
+  </section>
+
+  <hr>
+
+  <!-- news -->
+  <section id="news">
+    <h2>News</h2>
+    <div class="news-row">
+      <span class="news-dt">Jan 2026</span>
+      <span><b>Joined MERL as Research Scientist Intern</b> — working on uncertainty-aware perception and planning for legged robots at Mitsubishi Electric Research Laboratories, Cambridge.</span>
+    </div>
+    <div class="news-row">
+      <span class="news-dt">May 2024</span>
+      <span><b>Paper accepted at Workshop on Field Robotics, ICRA 2025</b> — recognized as one of the top 10 emerging researchers at WFR in Atlanta, Georgia.</span>
+    </div>
+    <div class="news-row">
+      <span class="news-dt">May 2024</span>
+      <span><b>Represented SUNY Buffalo at AI Expo, Albany NY</b> — connected with SUNY Chancellor Dr. John B. King and state policymakers.</span>
+    </div>
+    <div class="news-row">
+      <span class="news-dt">Apr 2024</span>
+      <span><b>Paper accepted at ICRA 2024</b> — L-DYNO framework nominated for best paper in robotic perception.</span>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- publications -->
+  <section id="publications">
+    <h2>Publications</h2>
+
+    <div class="pub-row">
+      <img src="IMG_1611-ezgif.com-video-to-gif-converter.gif" alt="CART">
+      <div>
+        <div class="pub-venue">RaL 2025 &middot; Under Review</div>
+        <div class="pub-title">CART: Context-Aware Terrain Adaptation for Stable Locomotion</div>
+        <div class="pub-authors"><strong>K Singh</strong>, Y Kim, Y Turkar, K Dantu</div>
+        <div class="pub-tags">
+          <a href="#">[Paper]</a>
+          <a href="#">[Video]</a>
+          <a href="#">[Code]</a>
         </div>
-      </section>
+      </div>
     </div>
 
-    <!-- Publications Section -->
-    <section id="publications" class="section">
-      <h2>Publications</h2>
-      <div class="publications-grid">
-        <div class="pub-item">
-          <div class="pub-gif-container">
-            <img src="IMG_1611-ezgif.com-video-to-gif-converter.gif" alt="CART Demo" class="pub-gif">
-          </div>
-          <div class="pub-details">
-            <h3 class="pub-title">CART: Context-Aware Terrain Adaptation for Stable Locomotion</h3>
-            <div class="pub-authors">K Singh, Y Kim, Y Turkar, K Dantu</div>
-            <div class="pub-meta">
-              <span class="pub-conference">RaL 2025 (Under Review)</span>
-              <span class="pub-date">June 2025</span>
-            </div>
-            <div class="pub-links">
-              <a href="#" class="pub-link paper-link">
-                <i class="fas fa-file-pdf"></i> Paper
-              </a>
-              <a href="#" class="pub-link video-link">
-                <i class="fas fa-video"></i> Video
-              </a>
-              <a href="#" class="pub-link code-link">
-                <i class="fas fa-code"></i> Code
-              </a>
-              <a href="#" class="pub-link gif-link">
-                <i class="fas fa-expand"></i> GIF
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="pub-item">
-          <div class="pub-gif-container">
-            <img src="inspector.gif" alt="Culvert Inspection" class="pub-gif">
-          </div>
-          <div class="pub-details">
-            <h3 class="pub-title">Autonomous Culvert Inspection on the Erie Canal using Legged Robots</h3>
-            <div class="pub-authors">K Singh, Y Turkar, Y Kim, M Lengel, K Dantu</div>
-            <div class="pub-meta">
-              <span class="pub-conference">ICRA 2025 (WFR)</span>
-              <span class="pub-date">May 2025</span>
-            </div>
-            <div class="pub-links">
-              <a href="data/Canals_IMPACT_WFR_compressed-1.pdf" class="pub-link paper-link">
-                <i class="fas fa-file-pdf"></i> Paper
-              </a>
-              <a href="https://droneslab.github.io/INSPECTOR/" class="pub-link video-link">
-                <i class="fas fa-video"></i> Project
-              </a>
-              <a href="https://www.youtube.com/watch?v=qXXrJpCrDek" class="pub-link gif-link">
-                <i class="fas fa-expand"></i> Video
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="pub-item">
-          <div class="pub-gif-container">
-            <img src="panos.gif" alt="PANOS" class="pub-gif">
-          </div>
-          <div class="pub-details">
-            <h3 class="pub-title">PANOS: Payload-Aware Navigation in Offroad Scenarios</h3>
-            <div class="pub-authors">K Singh, Y Turkar, C Alukal, K Dantu</div>
-            <div class="pub-meta">
-              <span class="pub-conference">Nerc 2024</span>
-              <span class="pub-date">May 2025</span>
-            </div>
-            <div class="pub-links">
-              <a href="https://arxiv.org/abs/2409.16566" class="pub-link paper-link">
-                <i class="fas fa-file-pdf"></i> Paper
-              </a>
-              <a href="https://droneslab.github.io/IMPACT/" class="pub-link video-link">
-                <i class="fas fa-video"></i> Project
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="pub-item">
-          <div class="pub-gif-container">
-            <img src="ldyno.gif" alt="L-DYNO Demo" class="pub-gif">
-          </div>
-          <div class="pub-details">
-            <h3 class="pub-title">L-DYNO: Framework to Learn Consistent Visual Features Using Robot's Motion</h3>
-            <div class="pub-authors">K Singh, C Adhivarahan, K Dantu</div>
-            <div class="pub-meta">
-              <span class="pub-conference">ICRA 2025</span>
-              <span class="pub-date">April 2025</span>
-            </div>
-            <div class="pub-links">
-              <a href="https://ieeexplore.ieee.org/abstract/document/10611097" class="pub-link paper-link">
-                <i class="fas fa-file-pdf"></i> Paper
-              </a>
-              <a href="https://ieeexplore.ieee.org/abstract/document/10611097" class="pub-link code-link">
-                <i class="fas fa-code"></i> Code
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="pub-item">
-          <div class="pub-gif-container">
-            <img src="offseg.gif" alt="OFFSEG Demo" class="pub-gif">
-          </div>
-          <div class="pub-details">
-            <h3 class="pub-title">OFFSEG: A Semantic Segmentation Framework for Off-Road Driving</h3>
-            <div class="pub-authors">K Viswanath*, K Singh*, P Jiang, PB Sujit, S Saripalli</div>
-            <div class="pub-meta">
-              <span class="pub-conference">CASE 2021</span>
-              <span class="pub-date">August 2021</span>
-            </div>
-            <div class="pub-links">
-              <a href="https://ieeexplore.ieee.org/abstract/document/9551643" class="pub-link paper-link">
-                <i class="fas fa-file-pdf"></i> Paper
-              </a>
-              <a href="https://github.com/kasiv008/OFFSEG" class="pub-link gif-link">
-                <i class="fas fa-expand"></i> Code
-              </a>
-            </div>
-          </div>
+    <div class="pub-row">
+      <img src="inspector.gif" alt="Culvert Inspection">
+      <div>
+        <div class="pub-venue">ICRA 2025 &middot; Workshop on Field Robotics</div>
+        <div class="pub-title">Autonomous Culvert Inspection on the Erie Canal using Legged Robots</div>
+        <div class="pub-authors"><strong>K Singh</strong>, Y Turkar, Y Kim, M Lengel, K Dantu</div>
+        <div class="pub-tags">
+          <a href="data/Canals_IMPACT_WFR_compressed-1.pdf">[Paper]</a>
+          <a href="https://droneslab.github.io/INSPECTOR/">[Project]</a>
+          <a href="https://www.youtube.com/watch?v=qXXrJpCrDek">[Video]</a>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- Experience Section -->
-    <!-- Experience Section -->
-<section id="experience" class="section">
-  <h2>Research and Teaching Experience</h2>
-  <div class="experience-grid">
+    <div class="pub-row">
+      <img src="panos.gif" alt="PANOS">
+      <div>
+        <div class="pub-venue">NERC 2024</div>
+        <div class="pub-title">PANOS: Payload-Aware Navigation in Offroad Scenarios</div>
+        <div class="pub-authors"><strong>K Singh</strong>, Y Turkar, C Alukal, K Dantu</div>
+        <div class="pub-tags">
+          <a href="https://arxiv.org/abs/2409.16566">[Paper]</a>
+          <a href="https://droneslab.github.io/IMPACT/">[Project]</a>
+        </div>
+      </div>
+    </div>
 
-    <!-- MERL Internship (NEW - Add this at top) -->
-    <div class="experience-item">
-      <h3 class="experience-title">Research Scientist Intern</h3>
-      <div class="experience-meta">
-        <span><i class="fas fa-map-marker-alt"></i> Mitsubishi Electric Research Laboratories (MERL), Cambridge, MA</span>
-        <span><i class="fas fa-calendar-alt"></i> Jan 2026 – Present</span>
+    <div class="pub-row">
+      <img src="ldyno.gif" alt="L-DYNO">
+      <div>
+        <div class="pub-venue">ICRA 2025</div>
+        <div class="pub-title">L-DYNO: Framework to Learn Consistent Visual Features Using Robot's Motion</div>
+        <div class="pub-authors"><strong>K Singh</strong>, C Adhivarahan, K Dantu</div>
+        <div class="pub-tags">
+          <a href="https://ieeexplore.ieee.org/abstract/document/10611097">[Paper]</a>
+          <a href="https://ieeexplore.ieee.org/abstract/document/10611097">[Code]</a>
+        </div>
       </div>
-      <div class="education-advisor">
-        Working under 
-        <a href="https://www.merl.com/people/dicairano" target="_blank" style="color: var(--secondary-color); text-decoration: none;">
-          Dr. Stefano Di Cairano
-        </a>
+    </div>
+
+    <div class="pub-row">
+      <img src="offseg.gif" alt="OFFSEG">
+      <div>
+        <div class="pub-venue">CASE 2021</div>
+        <div class="pub-title">OFFSEG: A Semantic Segmentation Framework for Off-Road Driving</div>
+        <div class="pub-authors">K Viswanath*, <strong>K Singh*</strong>, P Jiang, PB Sujit, S Saripalli</div>
+        <div class="pub-tags">
+          <a href="https://ieeexplore.ieee.org/abstract/document/9551643">[Paper]</a>
+          <a href="https://github.com/kasiv008/OFFSEG">[Code]</a>
+        </div>
       </div>
-      <ul class="experience-highlights">
+    </div>
+
+  </section>
+
+  <hr>
+
+  <!-- experience -->
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div class="exp-row">
+      <div class="exp-hd">
+        <span class="exp-title">Research Scientist Intern</span>
+        <span class="exp-date">Jan 2026 – Present</span>
+      </div>
+      <div class="exp-org">Mitsubishi Electric Research Laboratories (MERL), Cambridge, MA &mdash; with <a href="https://www.merl.com/people/dicairano">Dr. Stefano Di Cairano</a></div>
+      <ul class="exp-bullets">
         <li>Researching uncertainty-aware costmaps and task-conditioned perception for legged robot navigation</li>
         <li>Designing learning-based models for robust foothold prediction and out-of-distribution terrain awareness</li>
-        <li>Bridging perception and planning for reliable deployment of autonomous robots in challenging environments</li>
+        <li>Bridging perception and planning for reliable deployment in challenging environments</li>
       </ul>
     </div>
 
-    <!-- University at Buffalo - Research Assistant -->
-    <div class="experience-item">
-      <h3 class="experience-title">Research Assistant</h3>
-      <div class="experience-meta">
-        <span><i class="fas fa-map-marker-alt"></i> University at Buffalo</span>
-        <span><i class="fas fa-calendar-alt"></i> 2023–Present</span>
+    <div class="exp-row">
+      <div class="exp-hd">
+        <span class="exp-title">Research Assistant</span>
+        <span class="exp-date">2023 – Present</span>
       </div>
-      <ul class="experience-highlights">
+      <div class="exp-org">University at Buffalo — DRONES Lab</div>
+      <ul class="exp-bullets">
         <li>Developed PANOS for legged robot navigation in unstructured environments</li>
         <li>Created L-DYNO framework for visual feature learning using robot motion</li>
         <li>Implemented terrain adaptation algorithms for quadruped robots</li>
       </ul>
     </div>
 
-    <!-- Teaching Assistant -->
-    <div class="experience-item">
-      <h3 class="experience-title">Teaching Assistant</h3>
-      <div class="experience-meta">
-        <span><i class="fas fa-map-marker-alt"></i> University at Buffalo</span>
-        <span><i class="fas fa-calendar-alt"></i> 2022–2023</span>
+    <div class="exp-row">
+      <div class="exp-hd">
+        <span class="exp-title">Teaching Assistant</span>
+        <span class="exp-date">2022 – 2023</span>
       </div>
-      <ul class="experience-highlights">
-        <li>Robotic Algorithms (CSE 568/468)</li>
-        <li>Data Intensive Computing (CSE 587)</li>
+      <div class="exp-org">University at Buffalo</div>
+      <ul class="exp-bullets">
+        <li>Robotic Algorithms (CSE 568/468) and Data Intensive Computing (CSE 587)</li>
         <li>Developed course materials and supervised student projects</li>
       </ul>
     </div>
 
-    <!-- IISER Bhopal -->
-    <div class="experience-item">
-      <h3 class="experience-title">Research Associate</h3>
-      <div class="experience-meta">
-        <span><i class="fas fa-map-marker-alt"></i> IISER Bhopal</span>
-        <span><i class="fas fa-calendar-alt"></i> 2020–2022</span>
+    <div class="exp-row">
+      <div class="exp-hd">
+        <span class="exp-title">Research Associate</span>
+        <span class="exp-date">2020 – 2022</span>
       </div>
-      <ul class="experience-highlights">
+      <div class="exp-org">IISER Bhopal</div>
+      <ul class="exp-bullets">
         <li>Developed OFFSEG framework for off-road semantic segmentation</li>
-        <li>Implemented multi-modal sensor fusion techniques</li>
-        <li>Contributed to autonomous navigation systems for agricultural robots</li>
+        <li>Implemented multi-modal sensor fusion and contributed to agricultural robot navigation</li>
       </ul>
     </div>
 
-  </div>
-</section>
+  </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-      <h2>Contact</h2>
-      <div class="contact-grid">
-        <div class="contact-item">
-          <div class="contact-icon">
-            <i class="fas fa-envelope"></i>
-          </div>
-          <div class="contact-details">
-            <h4>Email</h4>
-            <a href="mailto:ksingh35@buffalo.edu">ksingh35@buffalo.edu</a>
-          </div>
-        </div>
+  <hr>
 
-        <div class="contact-item">
-          <div class="contact-icon">
-            <i class="fas fa-graduation-cap"></i>
-          </div>
-          <div class="contact-details">
-            <h4>Google Scholar</h4>
-            <a href="https://scholar.google.com/citations?user=ZYrJj3AAAAAJ">Scholar Page</a>
-          </div>
-        </div>
+  <!-- contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <table class="contact-table">
+      <tr>
+        <td>Email</td>
+        <td><a href="mailto:ksingh35@buffalo.edu">ksingh35@buffalo.edu</a></td>
+      </tr>
+      <tr>
+        <td>Scholar</td>
+        <td><a href="https://scholar.google.com/citations?user=ZYrJj3AAAAAJ" target="_blank">Google Scholar Profile</a></td>
+      </tr>
+      <tr>
+        <td>LinkedIn</td>
+        <td><a href="https://www.linkedin.com/in/kartikeya-singh1/" target="_blank">kartikeya-singh1</a></td>
+      </tr>
+      <tr>
+        <td>Office</td>
+        <td>Davis Hall 106, North Campus, University at Buffalo</td>
+      </tr>
+    </table>
+  </section>
 
-        <div class="contact-item">
-          <div class="contact-icon">
-            <i class="fas fa-building"></i>
-          </div>
-          <div class="contact-details">
-            <h4>Office</h4>
-            <div>Davis Hall 106, North Campus, University at Buffalo</div>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-icon">
-            <i class="fab fa-linkedin-in"></i>
-          </div>
-          <div class="contact-details">
-            <h4>LinkedIn</h4>
-            <a href="https://www.linkedin.com/in/kartikeya-singh1/">Link</a>
-          </div>
-        </div>
-      </div>
-    </section>
+  <div id="footer">
+    Kartikeya Singh &middot; University at Buffalo &middot; 2026
   </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Mobile menu toggle
-      const menuToggle = document.querySelector('.menu-toggle');
-      const nav = document.querySelector('.nav');
-      
-      menuToggle.addEventListener('click', () => {
-        nav.classList.toggle('active');
-      });
-
-      // Close mobile menu when clicking on links
-      document.querySelectorAll('.nav a').forEach(link => {
-        link.addEventListener('click', () => {
-          nav.classList.remove('active');
-        });
-      });
-
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
-          if (target) {
-            window.scrollTo({
-              top: target.offsetTop - 80,
-              behavior: 'smooth'
-            });
-          }
-        });
-      });
-      
-      // GIF expand functionality
-      document.querySelectorAll('.pub-gif').forEach(gif => {
-        gif.addEventListener('click', function() {
-          if (this.classList.contains('expanded')) {
-            this.classList.remove('expanded');
-            this.closest('.pub-gif-container').classList.remove('expanded');
-          } else {
-            this.classList.add('expanded');
-            this.closest('.pub-gif-container').classList.add('expanded');
-          }
-        });
-      });
-    });
-  </script>
+</div>
 </body>
 </html>
